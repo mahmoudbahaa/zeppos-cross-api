@@ -1,0 +1,183 @@
+{
+  "configVersion": "v2",
+  "app": {
+    "appId": 999999999,
+    "appName": "Test",
+    "appType": "app",
+    "version": {
+      "code": 1,
+      "name": "1.0.0"
+    },
+    "icon": "icon.png",
+    "vender": "mahmoudbahaa",
+    "description": "Test"
+  },
+  "permissions": [
+    "data:os.device.info",
+    "device:os.alarm",
+    "device:os.ble",
+    "device:os.local_storage"
+  ],
+  "runtime": {
+    "apiVersion": {
+      "compatible": "2.0.0",
+      "target": "2.0.0",
+      "minVersion": "2.0.0"
+    }
+  },
+  "i18n": {
+    "en-US": {
+      "appName": "Test"
+    }
+  },
+  "defaultLanguage": "en-US",
+  "debug": true,
+  "targets": {
+    "nxp": {
+      "platforms": [
+        {
+          "name": "gtr-4",
+          "deviceSource": 7930112
+        },
+        {
+          "name": "gtr-4-2",
+          "deviceSource": 7930113
+        },
+        {
+          "name": "gtr3",
+          "deviceSource": 226
+        },
+        {
+          "name": "gtr3-2",
+          "deviceSource": 227
+        },
+        {
+          "name": "t-rex-ultra",
+          "deviceSource": 6553856
+        },
+        {
+          "name": "t-rex-ultra",
+          "deviceSource": 6553857
+        },
+        {
+          "name": "gts-4",
+          "deviceSource": 7995648
+        },
+        {
+          "name": "gts-4-2",
+          "deviceSource": 7995649
+        },
+        {
+          "name": "falcon",
+          "deviceSource": 414
+        },
+        {
+          "name": "falcon-2",
+          "deviceSource": 415
+        },
+        {
+          "name": "cheetah",
+          "deviceSource": 8192256
+        },
+        {
+          "name": "cheetah-2",
+          "deviceSource": 8192257
+        },
+        {
+          "name": "cheetah-pro",
+          "deviceSource": 8126720
+        },
+        {
+          "name": "cheetah-pro-2",
+          "deviceSource": 8126721
+        },
+        {
+          "name": "gtr3pro",
+          "deviceSource": 229
+        },
+        {
+          "name": "gtr3pro-2",
+          "deviceSource": 230
+        },
+        {
+          "name": "gts3",
+          "deviceSource": 224
+        },
+        {
+          "name": "gts3-2",
+          "deviceSource": 225
+        },
+        {
+          "name": "t-rex-2",
+          "deviceSource": 418
+        },
+        {
+          "name": "t-rex-2-2",
+          "deviceSource": 419
+        }
+      ],
+      "designWidth": 480,
+      "module": {
+        "page": {
+          "pages": [
+            "page/home",
+            "page/about",
+            "page/select",
+            "page/player/realPlayer",
+            "page/settings/home",
+            "page/settings/fontSize",
+            "page/settings/lang",
+            "page/settings/chaptersLang",
+            "page/file/home",
+            "page/file/storageInfo",
+            "page/file/manager",
+            "page/file/edit",
+            "page/file/view/text",
+            "page/file/view/image",
+            "page/file/view/hex"
+          ]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        }
+      }
+    },
+    "dialog": {
+      "platforms": [
+        {
+          "name": "gts-4-mini",
+          "deviceSource": 246
+        },
+        {
+          "name": "gts-4-mini-2",
+          "deviceSource": 247
+        }
+      ],
+      "designWidth": 194,
+      "module": {
+        "page": {
+          "pages": [
+            "page/home",
+            "page/about",
+            "page/select",
+            "page/player/realPlayer",
+            "page/settings/home",
+            "page/settings/fontSize",
+            "page/settings/lang",
+            "page/settings/chaptersLang",
+            "page/file/home",
+            "page/file/storageInfo",
+            "page/file/manager",
+            "page/file/edit",
+            "page/file/view/text",
+            "page/file/view/image",
+            "page/file/view/hex"
+          ]
+        },
+        "app-side": {
+          "path": "app-side/index"
+        }
+      }
+    }
+  }
+}

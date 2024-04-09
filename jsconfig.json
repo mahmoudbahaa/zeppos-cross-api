@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2017",
+    "checkJs": true
+  },
+  "exclude": ["node_modules", "**/node_modules/*", "dist", "dist/*", "zeppos-3.0-modules/**"]
+}
