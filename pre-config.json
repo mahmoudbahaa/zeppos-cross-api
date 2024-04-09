@@ -1,0 +1,14 @@
+{
+  "cleanFirst": true,
+  "sync": true,
+  "apis": ["1.0", "2.0", "3.0"],
+  "pages": [
+    "home"
+  ],
+  "module": {},
+  "sources": [
+    "lib",
+    "page",
+    "app.js"
+  ]
+}

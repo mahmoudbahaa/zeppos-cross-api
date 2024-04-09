@@ -48,18 +48,13 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
  - [Node.js 14.x+](https://nodejs.org/en/download/)
- - preprocessor
+ - [Python 3.8+](https://www.python.org/downloads/)
+ - [preprocessor](https://github.com/dcodeIO/Preprocessor.js)
+ - [watchdog](https://pypi.org/project/watchdog/)
 
 ```
 npm i preprocessor -g
-```
-
-### Optional Prerequisites for watch script
-
-  - inotifywait
-
-```
-sudo apt install inotify-tools
+pip3 install watchdog
 ```
 
 ### Installing
@@ -69,6 +64,8 @@ clone thre repo then run inside
 ```
 python3 prepare_all.py
 ```
+
+This will preprocess any changed file on save and copy it to all 3 folder so that `zeus dev` would work properly
 
 ## 🎈 Usage <a name="usage"></a>
 
@@ -80,12 +77,18 @@ mainly you have the following:
 2. app.json_2.0
 3. app.json_3.0
 * common folder in  assets that is copied to each target in assets folder by script
-* 
+* for configurations edit `pre-config.json`
+  * `cleanFirst` (`boolean`): delete the previously created folders first, if set to false will overwrite only new files leaving old files that are deleted so not recommded to turn off
+  * `sync` (`boolean`): if true then a watchdog is created on source folders to watch for changes and sync them to all api folders
+  * `pages` (`string[]`): a list of pages to add to app.json relative to page folder
+  * `module`(`object`):  extra [module](https://docs.zepp.com/docs/1.0/reference/app-json/#module-object) to add to app.json, app-side (api-side, setting, ..) DONT use api-service as it is only supported on 3.0 and thus won't work on other api levels
+  * `sources` (`string[]`) a list of source files/folder to copy to api generated folders and sync if sync is true. Should atleast contains ("lib", "page", "app.js")
 
 ## ⛏️ Built Using <a name = "built_using"></a>
 
 - [Zepp OS 3.0](https://docs.zepp.com/docs/intro/) - Framework
 - [preprocessor](https://github.com/dcodeIO/Preprocessor.js) - javascrit preprocessor
+- [watchdog](https://pypi.org/project/watchdog/) watch folder for changes
 - modified version of [prepare_all.py](https://github.com/melianmiko/ZeppOS-Toolbox/blob/master/prepare_all.py), [app.json](https://github.com/melianmiko/ZeppOS-Toolbox/blob/master/app.json) and other files from [ZeppOS-Toolbox](https://github.com/melianmiko/ZeppOS-Toolbox) by [melianmiko](https://github.com/melianmiko)
 
 ## ✍️ Authors <a name = "authors"></a>

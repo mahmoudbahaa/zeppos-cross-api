@@ -159,7 +159,6 @@ N/A
 
 ### Not found in 1.0
 
-Widgets:
 * [POLYLINE](https://docs.zepp.com/docs/reference/device-app-api/newAPI/ui/widget/GRADIENT_POLYLINE/)
 * [PAGE_INDICATOR](https://docs.zepp.com/docs/reference/device-app-api/newAPI/ui/widget/PAGE_INDICATOR/)
 * [VIEW_CONTAINER](https://docs.zepp.com/docs/reference/device-app-api/newAPI/ui/widget/VIEW_CONTAINER/)

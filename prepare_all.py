@@ -2,29 +2,29 @@ from pathlib import Path
 import subprocess
 import json
 import shutil
-import os 
+import sys
+import time
+import logging
+from watchdog.observers import Observer
+from watchdog.events import * 
 
-delete=False
 sourceFolder = Path(".").resolve()
 common_assets = sourceFolder / "assets" / "common"
 
-pages = [
-  "home"
-]
+configFile = sys.argv[1] if len(sys.argv) == 2 else "pre-config.json"
+if not Path(configFile).exists():
+  print("config file does not exist")
+  exit(1)
+# Load configurations
+with open(configFile, "r") as f:
+  config_json = json.load(f)  
 
-module = {
-  # "app-side": {
-  #   "path": "app-side/index"
-  # }
-}
-
-sources = {
-  "lib",
-  "page",
-  "app.js"
-}
-
-
+cleanFirst = config_json["cleanFirst"]
+pages = config_json["pages"]
+module = config_json["module"]
+sources = config_json["sources"]
+apis = config_json["apis"]
+sync = config_json["sync"]
 
 def preprocess(source, target, APi_LEVEL):
   if source.is_dir():
@@ -40,7 +40,7 @@ def preprocess(source, target, APi_LEVEL):
 def createProject(APi_LEVEL):
   project = Path("./" + APi_LEVEL).resolve()
   #clean
-  if delete and project.is_dir():
+  if cleanFirst and project.is_dir():
     shutil.rmtree(project)
   if (not project.exists()):
     project.mkdir()
@@ -84,7 +84,80 @@ def createProject(APi_LEVEL):
 
   with open(project / "app.json", "w") as f:
     f.write(json.dumps(app_json, indent=2, ensure_ascii=False))
+  print("Created project for api level: '" + APi_LEVEL + "'")
 
-createProject("1.0")
-createProject("2.0")
-createProject("3.0")
+class OnMyWatch:
+    def __init__(self, watchDirectory):
+        self.observer = Observer()
+        self.watchDirectory = watchDirectory
+ 
+    def run(self):
+        event_handler = Handler()
+        self.observer.schedule(
+           event_handler, 
+           self.watchDirectory, 
+           recursive = True, 
+           event_filter = [
+              # FileOpenedEvent, 
+              # FileClosedEvent,
+              FileCreatedEvent,
+              FileDeletedEvent,
+              FileModifiedEvent,
+              FileMovedEvent,
+              FileSystemEvent
+              ]
+              )
+        self.observer.start()
+        return self
+
+class Handler(FileSystemEventHandler):
+ 
+  @staticmethod
+  def on_any_event(event):
+    if event.event_type == 'deleted':
+      print(("Directory" if event.is_directory else "File") + " deleted: " + event.src_path)
+      for api_level in apis:
+        subprocess.run(["rm", "-r", api_level + "/" + event.src_path])
+
+    elif event.event_type == 'created':
+      if event.is_directory:
+        print("Directory created: " + event.src_path)
+        for api_level in apis:
+          subprocess.run(["mkdir", api_level + "/" + event.src_path])
+      else:
+        print("File created: " + event.src_path)
+        for api_level in apis:
+          subprocess.run(["touch", api_level + "/" + event.src_path])
+ 
+    elif event.event_type == 'modified' and not event.is_directory:
+        print("File modified: " + event.src_path)
+        input = Path(event.src_path)
+        for api_level in apis:
+          with Path(api_level + "/" + event.src_path).open(mode='w') as outfile:
+            subprocess.run(["preprocess", input , ".", "-API=" + api_level], stdout=outfile)
+
+if __name__=="__main__":    
+  print("Creating project for api levels: '" + "', '".join(apis) + "'")  
+  for api_level in apis:
+    createProject(api_level)
+
+  if (sync):
+    print("sync is true setting up watchdog")
+    print("Please keep open")
+    print("Press CTRL + C when done developing to exit")
+    watchers = []
+    for path in sources:
+      watch = OnMyWatch(path)
+      watchers.append(watch.run())
+
+    try:
+      while True:
+        time.sleep(5)
+    except:
+      for watcher in watchers:
+        watcher.observer.stop()
+      print("Observers Stopped")
+      for watcher in watchers:
+        watcher.observer.join()
+  else:
+    print("Watch changes is false exiting")
