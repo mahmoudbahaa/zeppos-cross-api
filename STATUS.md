@@ -8,10 +8,10 @@ For each of non-supported function we either have
 
 For each module of each API_LEVEL there is 5 level of support:
 
-1. FULL
-2. PARTIAL
-3. NONE  (ALL are ERROR)
-4. NONE<sup>*</sup> (ALL are NOOP)
+1. 🟩 FULL
+2. 🟧 PARTIAL
+3. 🟥 NONE  (ALL are ERROR)
+4. 🟥 NONE<sup>*</sup> (ALL are NOOP)
 5. N/A (not yet implemented)
 6. WONT_SUPPORT (it is only availaible for 3.0 and can't/won't be implemented in 1.0/2.0)
     * `@zos/app-service` No alternative so can't use if you need to be cross-api
@@ -20,31 +20,31 @@ For each module of each API_LEVEL there is 5 level of support:
 ## SUPPORT STATUS
 
 
-| Module                                 | 3.0  |   2.0   |   1.0   |
-| -------------------------------------- |:----:|:-------:|:-------:|
-| [@zos/alarm](#alarm)                   | FULL | PARTIAL | PARTIAL |
-| [@zos/app](#app)                       | FULL | PARTIAL | PARTIAL |
+| Module                                 | 3.0     |   2.0      |   1.0   |
+| -------------------------------------- |:--------|:-----------|:-----------|
+| [@zos/alarm](#alarm)                   | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
+| [@zos/app](#app)                       | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
 | @zos/app-service                       || WONT_SUPPORT
-| [@zos/ble](#ble)                       | FULL | PARTIAL | PARTIAL |
-| @zos/device                            | FULL | FULL    |  FULL   |
-| [@zos/display](#display)               | FULL | PARTIAL | PARTIAL |
-| @zos/fs                                | FULL | FULL    |  FULL   |
-| @zos/i18n                              | FULL | FULL    |  NONE   |
-| @zos/interaction                       | FULL | FULL    |  FULL   |
-| [@zos/notification](#notification)     | FULL | NONE*   |  NONE*  |
-| [@zos/page](#page)                     | FULL | FULL    | PARTIAL |
-| [@zos/router](#router)                 | FULL | PARTIAL | PARTIAL |
-| [@zos/sensor](#sensor)                 | FULL | PARTIAL | PARTIAL |
-| [@zos/settings](#settings)             | FULL | PARTIAL | PARTIAL |
-| [@zos/storage](#storage)               | FULL | PARTIAL | PARTIAL |
+| [@zos/ble](#ble)                       | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
+| @zos/device                            | 🟩 FULL | 🟩 FULL    | 🟩 FULL    |
+| [@zos/display](#display)               | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
+| @zos/fs                                | 🟩 FULL | 🟩 FULL    | 🟩 FULL    |
+| @zos/i18n                              | 🟩 FULL | 🟩 FULL    | 🟥 NONE    |
+| @zos/interaction                       | 🟩 FULL | 🟩 FULL    | 🟩 FULL    |
+| [@zos/notification](#notification)     | 🟩 FULL | 🟥 NONE*   | 🟥 NONE*   |
+| [@zos/page](#page)                     | 🟩 FULL | 🟩 FULL    | 🟧 PARTIAL |
+| [@zos/router](#router)                 | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
+| [@zos/sensor](#sensor)                 | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
+| [@zos/settings](#settings)             | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
+| [@zos/storage](#storage)               | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
 | @zos/transfer-file                     || WONT_SUPPORT
-| [@zos/ui](#ui)                         | FULL | PARTIAL | PARTIAL |
-| [@zos/user](#user)                     | FULL | PARTIAL | PARTIAL |
-| @zos/utils                             | FULL | FULL    |  FULL   |
+| [@zos/ui](#ui)                         | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
+| [@zos/user](#user)                     | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
+| @zos/utils                             | 🟩 FULL | 🟩 FULL    | 🟩 FULL    |
 
 # Unsupported functions:
 
-Listing unsupported function only for PARTIAL and NONE*
+Listing unsupported function only for 🟧 PARTIAL and 🟥 NONE*
 
 ## Alarm ([@zos/alarm](./zeppos-3.0-modules/@zos/alarm.ts)) <a name = "alarm"></a>
 
@@ -123,31 +123,31 @@ Listing unsupported function only for PARTIAL and NONE*
 
 ## SENSOR ([@zos/sensor](./zeppos-3.0-modules/@zos/sensor.ts)) <a name = "sensor"></a>
 
-|     Sensor      |   3.0   |   2.0   |   1.0   |
-|:---------------:|:-------:|:-------:|:--------|
-| Accelerometer   |   FULL  | MISSING | MISSING |
-| Barometer       |   FULL  |   FULL  | MISSING |
-| Battery         |   FULL  |   FULL  |  FULL   |
-| BloodOxygen     |   FULL  | PARTIAL | PARTIAL |
-| Calorie         |   FULL  |   FULL  |  FULL   |
-| Compass         |   FULL  | MISSING | MISSING |
-| Distance        |   FULL  |   FULL  |  FULL   |
-| FatBurning      |   FULL  |   FULL  |  FULL   |
-| Geolocation     |   FULL  | PARTIAL | MISSING |
-| Gyroscope       |   FULL  | MISSING | MISSING |
-| HeartRate       |   FULL  | PARTIAL | PARTIAL |
-| Pai             |   FULL  |   FULL  |  FULL   |
-| Screen          |   FULL  | MISSING | MISSING |
-| Sleep           |   FULL  | PARTIAL | PARTIAL |
-| Stand           |   FULL  |   FULL  |  FULL   |
-| Step            |   FULL  |   FULL  |  FULL   |
-| Stress          |   FULL  | PARTIAL | PARTIAL |
-| Time            |   FULL  | PARTIAL | PARTIAL |
-| Vibrator        |   FULL  |   FULL  |  FULL   |
-| Wear            |   FULL  |   FULL  |  FULL   |
-| Weather         |   FULL  |   FULL  |  FULL   |
-| Workout         |   FULL  | MISSING | MISSING |
-| WorldClock      |   FULL  | MISSING |  FULL   |
+|     Sensor      |   3.0      |   2.0      |   1.0   |
+|:---------------:|:-----------|:-----------|:--------|
+| Accelerometer   | 🟩 FULL    | 🟥 MISSING | 🟥 MISSING |
+| Barometer       | 🟩 FULL    | 🟩 FULL    | 🟥 MISSING |
+| Battery         | 🟩 FULL    | 🟩 FULL    | 🟩 FULL    |
+| BloodOxygen     | 🟩 FULL    | 🟧 PARTIAL | 🟧 PARTIAL |
+| Calorie         | 🟩 FULL    | 🟩 FULL    | 🟩 FULL    |
+| Compass         | 🟩 FULL    | 🟥 MISSING | 🟥 MISSING |
+| Distance        | 🟩 FULL    | 🟩 FULL    | 🟩 FULL    |
+| FatBurning      | 🟩 FULL    | 🟩 FULL    | 🟩 FULL    |
+| Geolocation     | 🟩 FULL    | 🟧 PARTIAL | 🟥 MISSING |
+| Gyroscope       | 🟩 FULL    | 🟥 MISSING | 🟥 MISSING |
+| HeartRate       | 🟩 FULL    | 🟧 PARTIAL | 🟧 PARTIAL |
+| Pai             | 🟩 FULL    | 🟩 FULL    | 🟩 FULL    |
+| Screen          | 🟩 FULL    | 🟥 MISSING | 🟥 MISSING |
+| Sleep           | 🟩 FULL    | 🟧 PARTIAL | 🟧 PARTIAL |
+| Stand           | 🟩 FULL    | 🟩 FULL    | 🟩 FULL    |
+| Step            | 🟩 FULL    | 🟩 FULL    | 🟩 FULL    |
+| Stress          | 🟩 FULL    | 🟧 PARTIAL | 🟧 PARTIAL |
+| Time            | 🟩 FULL    | 🟧 PARTIAL | 🟧 PARTIAL |
+| Vibrator        | 🟩 FULL    | 🟩 FULL    | 🟩 FULL    |
+| Wear            | 🟩 FULL    | 🟩 FULL    | 🟩 FULL    |
+| Weather         | 🟩 FULL    | 🟩 FULL    | 🟩 FULL    |
+| Workout         | 🟩 FULL    | 🟥 MISSING | 🟥 MISSING |
+| WorldClock      | 🟩 FULL    | 🟥 MISSING | 🟩 FULL    |
 
 
 ## SETTINGS ([@zos/settings](./zeppos-3.0-modules/@zos/settings.ts)) <a name = "settings"></a>
