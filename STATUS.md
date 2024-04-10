@@ -34,7 +34,7 @@ For each module of each API_LEVEL there is 5 level of support:
 | [@zos/notification](#notification)     | FULL | NONE*   |  NONE*  |
 | [@zos/page](#page)                     | FULL | FULL    | PARTIAL |
 | [@zos/router](#router)                 | FULL | PARTIAL | PARTIAL |
-| [@zos/sensor](#sensor)                 | N/A  | N/A     |   N/A   |
+| [@zos/sensor](#sensor)                 | FULL | PARTIAL | PARTIAL |
 | [@zos/settings](#settings)             | FULL | PARTIAL | PARTIAL |
 | [@zos/storage](#storage)               | FULL | PARTIAL | PARTIAL |
 | @zos/transfer-file                     || WONT_SUPPORT
@@ -123,9 +123,32 @@ Listing unsupported function only for PARTIAL and NONE*
 
 ## SENSOR ([@zos/sensor](./zeppos-3.0-modules/@zos/sensor.ts)) <a name = "sensor"></a>
 
-<!-- ### API_LEVEL 2.0 and 1.0 -->
+|     Sensor      |   3.0   |   2.0   |   1.0   |
+|:---------------:|:-------:|:-------:|:--------|
+| Accelerometer   |   FULL  | MISSING | MISSING |
+| Barometer       |   FULL  |   FULL  | MISSING |
+| Battery         |   FULL  |   FULL  |  FULL   |
+| BloodOxygen     |   FULL  | PARTIAL | PARTIAL |
+| Calorie         |   FULL  |   FULL  |  FULL   |
+| Compass         |   FULL  | MISSING | MISSING |
+| Distance        |   FULL  |   FULL  |  FULL   |
+| FatBurning      |   FULL  |   FULL  |  FULL   |
+| Geolocation     |   FULL  | PARTIAL | MISSING |
+| Gyroscope       |   FULL  | MISSING | MISSING |
+| HeartRate       |   FULL  | PARTIAL | PARTIAL |
+| Pai             |   FULL  |   FULL  |  FULL   |
+| Screen          |   FULL  | MISSING | MISSING |
+| Sleep           |   FULL  | PARTIAL | PARTIAL |
+| Stand           |   FULL  |   FULL  |  FULL   |
+| Step            |   FULL  |   FULL  |  FULL   |
+| Stress          |   FULL  | PARTIAL | PARTIAL |
+| Time            |   FULL  | PARTIAL | PARTIAL |
+| Vibrator        |   FULL  |   FULL  |  FULL   |
+| Wear            |   FULL  |   FULL  |  FULL   |
+| Weather         |   FULL  |   FULL  |  FULL   |
+| Workout         |   FULL  | MISSING | MISSING |
+| WorldClock      |   FULL  | MISSING |  FULL   |
 
-N/A
 
 ## SETTINGS ([@zos/settings](./zeppos-3.0-modules/@zos/settings.ts)) <a name = "settings"></a>
 

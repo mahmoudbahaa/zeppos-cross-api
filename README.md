@@ -20,6 +20,7 @@
 
 - [About](#about)
 - [Status](./STATUS.md)
+- [Test Status](./TEST_STATUS.md)
 - [Getting Started](#getting_started)
 - [Deployment](#deployment)
 - [Usage](#usage)
@@ -40,6 +41,8 @@ You write using API_LEVEL 3.0 then generate 3 whole project folders:
 * one for 3.0
 
 ## :dart: [Status](./STATUS.md)
+
+## :dart: [Test Status](./TEST_STATUS.md)
 
 ## 🏁 Getting Started <a name = "getting_started"></a>
 

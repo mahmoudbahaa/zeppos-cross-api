@@ -1,14 +1,14 @@
 # Modules
 
-For each module of each API_LEVEL there is 3 level of support:
+For each module of each API_LEVEL there is 3 level of test status:
 
 1. TESTED (tested what can be tested)
 2. PARTIAL 
 3. NONE
 
-## SUPPORT STATUS
+## TEST STATUS
 
-For 3.0 not testing is needed for obvious reasons
+For 3.0 no testing is needed as we just do (export * from) for each module so nothing is manipulated
 
 | Module                                                  |   2.0   |   1.0   |
 | --------------------------------------                  |:-------:|:-------:|
