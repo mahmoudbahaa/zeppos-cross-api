@@ -33,9 +33,16 @@ def preprocess(source, target, APi_LEVEL):
       
       for subfileOrFolder in source.iterdir():
          preprocess(subfileOrFolder, target / subfileOrFolder.name, APi_LEVEL)
+
+      if len(list(target.iterdir())) == 0:
+        target.rmdir()
   else:
     with target.open(mode='w') as outfile:
       subprocess.run(["preprocess", source, ".", "-API=" + APi_LEVEL], stdout=outfile)
+    contents = re.sub(r"[\n\t\s]+", "", target.read_text())
+    if len(contents) == 0:
+      target.unlink()
+
     
 def createProject(APi_LEVEL):
   project = Path("./" + APi_LEVEL).resolve()
@@ -117,13 +124,15 @@ class Handler(FileSystemEventHandler):
     if event.event_type == 'deleted':
       print(("Directory" if event.is_directory else "File") + " deleted: " + event.src_path)
       for api_level in apis:
-        subprocess.run(["rm", "-r", api_level + "/" + event.src_path])
+        if Path(api_level + "/" + event.src_path).exists():
+          subprocess.run(["rm", "-r", api_level + "/" + event.src_path])
 
     elif event.event_type == 'created':
       if event.is_directory:
         print("Directory created: " + event.src_path)
         for api_level in apis:
-          subprocess.run(["mkdir", api_level + "/" + event.src_path])
+          if not Path(api_level + "/" + event.src_path).exists:
+            subprocess.run(["mkdir", api_level + "/" + event.src_path])
       else:
         print("File created: " + event.src_path)
         for api_level in apis:
@@ -133,8 +142,31 @@ class Handler(FileSystemEventHandler):
         print("File modified: " + event.src_path)
         input = Path(event.src_path)
         for api_level in apis:
-          with Path(api_level + "/" + event.src_path).open(mode='w') as outfile:
+          target = Path(api_level + "/" + event.src_path)
+          target.parent.mkdir(parents=True, exist_ok=True)
+          with target.open(mode='w') as outfile:
             subprocess.run(["preprocess", input , ".", "-API=" + api_level], stdout=outfile)
+          contents = re.sub(r"[\n\t\s]+", "", target.read_text())
+          if len(contents) == 0:
+            target.unlink()
+            while (len(list(target.parent.iterdir())) == 0):
+              target.parent.rmdir()
+              target = target.parent
+
+    elif event.event_type == 'moved':
+      moved = False
+      for api_level in apis:
+        if Path(api_level + "/" + event.src_path).exists():
+          moved = True
+          Path(api_level + "/" + event.dest_path).parent.mkdir(parents= True, exist_ok=True)
+          subprocess.run(["mv", api_level + "/" + event.src_path, api_level + "/" + event.dest_path])
+
+      if moved:
+        type = "Folder" if event.is_directory else "File"
+        print(type + " moved from: " + event.src_path + " to: " + event.dest_path)
+
+    # else:
+      # print("Unhandled " + event.event_type + " : " + event.src_path)
 
 if __name__=="__main__":    
   print("Creating project for api levels: '" + "', '".join(apis) + "'")  

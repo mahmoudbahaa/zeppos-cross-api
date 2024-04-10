@@ -6,7 +6,7 @@
 
 ## Current Todos
 
-* Complete sensor module
+* Write Tests for easy to test functionality
 
 ## Done so far
 
@@ -14,3 +14,4 @@
 * Use Python only and remove the need for bash script
 * Add configuration file
 * specify transfer-file and app-service modules as CANT_SUPPORT/ won't be implemented
+* Complete sensor module

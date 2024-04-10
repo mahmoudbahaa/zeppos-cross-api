@@ -20,7 +20,6 @@ For each module of each API_LEVEL there is 5 level of support:
 ## SUPPORT STATUS
 
 
-
 | Module                                 | 3.0  |   2.0   |   1.0   |
 | -------------------------------------- |:----:|:-------:|:-------:|
 | [@zos/alarm](#alarm)                   | FULL | PARTIAL | PARTIAL |
