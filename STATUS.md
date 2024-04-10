@@ -1,6 +1,5 @@
 # Modules
 
-
 For each of non-supported function we either have
 
 1. ERROR => function throws an error
@@ -31,6 +30,7 @@ For each module of each API_LEVEL there is 5 level of support:
 | @zos/fs                                | 🟩 FULL | 🟩 FULL    | 🟩 FULL    |
 | @zos/i18n                              | 🟩 FULL | 🟩 FULL    | 🟥 NONE    |
 | @zos/interaction                       | 🟩 FULL | 🟩 FULL    | 🟩 FULL    |
+| @zos/media                             | 🟩 FULL | 🟥 NONE    | 🟥 NONE    |
 | [@zos/notification](#notification)     | 🟩 FULL | 🟥 NONE*   | 🟥 NONE*   |
 | [@zos/page](#page)                     | 🟩 FULL | 🟩 FULL    | 🟧 PARTIAL |
 | [@zos/router](#router)                 | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
@@ -46,19 +46,19 @@ For each module of each API_LEVEL there is 5 level of support:
 
 Listing unsupported function only for 🟧 PARTIAL and 🟥 NONE*
 
-## Alarm ([@zos/alarm](./zeppos-3.0-modules/@zos/alarm.ts)) <a name = "alarm"></a>
+## Alarm @zos/alarm <a name = "alarm"></a>
 
 ### API_LEVEL 2.0 and 1.0
 
 * repeat_type in set => ERROR
 
-## APP  ([@zos/app](./zeppos-3.0-modules/@zos/app.ts)) <a name = "app"></a>
+## APP  @zos/app <a name = "app"></a>
 
 ### API_LEVEL 2.0 and 1.0
 
 * emitCustomSystemEvent => ERROR
 
-## BLE ([@zos/ble](./zeppos-3.0-modules/@zos/ble.ts)) <a name = "ble"></a>
+## BLE @zos/ble <a name = "ble"></a>
 
 ### API_LEVEL 2.0 and 1.0
 
@@ -87,7 +87,7 @@ Listing unsupported function only for 🟧 PARTIAL and 🟥 NONE*
 * mstWriteCharacteristic => ERROR
 * mstWriteDescriptor => ERROR
 
-## DISPLAY ([@zos/display](./zeppos-3.0-modules/@zos/display.ts)) <a name = "display"></a>
+## DISPLAY @zos/display <a name = "display"></a>
 
 ### API_LEVEL 2.0 and 1.0
 
@@ -100,7 +100,7 @@ Listing unsupported function only for 🟧 PARTIAL and 🟥 NONE*
 * pausePalmScreenOff => NOOP (but return non-zero indicating non-sucess code)
 * resetPalmScreenOff => NOOP (but return non-zero indicating non-sucess code)
 
-## NOTIFICATION ([@zos/notification](./zeppos-3.0-modules/@zos/notification.ts)) <a name = "notification"></a>
+## NOTIFICATION @zos/notification <a name = "notification"></a>
 
 ### API_LEVEL 2.0 and 1.0
 
@@ -108,20 +108,20 @@ Listing unsupported function only for 🟧 PARTIAL and 🟥 NONE*
 * cancel => NOOP
 * getAllNotifications => NOOP (return empty array)
 
-## PAGE ([@zos/page](./zeppos-3.0-modules/@zos/page.ts)) <a name = "page"></a>
+## PAGE @zos/page <a name = "page"></a>
 
 ### API_LEVEL 1.0
 
 * setScrollLock => ERROR
 
-## ROUTER ([@zos/router](./zeppos-3.0-modules/@zos/router.ts)) <a name = "router"></a>
+## ROUTER @zos/router <a name = "router"></a>
 
 ### API_LEVEL 2.0 and 1.0
 
 * ALL SYSTEM_APP constants are undefined
 * checkSystemApp => NOOP
 
-## SENSOR ([@zos/sensor](./zeppos-3.0-modules/@zos/sensor.ts)) <a name = "sensor"></a>
+## SENSOR @zos/sensor <a name = "sensor"></a>
 
 |     Sensor      |   3.0      |   2.0      |   1.0   |
 |:---------------:|:-----------|:-----------|:--------|
@@ -150,13 +150,13 @@ Listing unsupported function only for 🟧 PARTIAL and 🟥 NONE*
 | WorldClock      | 🟩 FULL    | 🟥 MISSING | 🟩 FULL    |
 
 
-## SETTINGS ([@zos/settings](./zeppos-3.0-modules/@zos/settings.ts)) <a name = "settings"></a>
+## SETTINGS @zos/settings <a name = "settings"></a>
 
 ### API_LEVEL 2.0 and 1.0
 
 * getSystemMode => ERROR
 
-## UI ([@zos/ui](./zeppos-3.0-modules/@zos/ui.ts)) <a name = "ui"></a>
+## UI @zos/ui <a name = "ui"></a>
 
 ### API_LEVEL 1.0
 
@@ -181,7 +181,7 @@ Listing unsupported function only for 🟧 PARTIAL and 🟥 NONE*
 * [VIEW_CONTAINER](https://docs.zepp.com/docs/reference/device-app-api/newAPI/ui/widget/VIEW_CONTAINER/)
 
 
-## USER ([@zos/user](./zeppos-3.0-modules/@zos/user.ts)) <a name = "user"></a>
+## USER @zos/user <a name = "user"></a>
 
 ### API_LEVEL 2.0 and 1.0
 
