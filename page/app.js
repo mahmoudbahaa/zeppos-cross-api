@@ -1,7 +1,7 @@
 /* global Page */
-import { TestSreen } from '../lib/TestScreen'
-import { testEmitCustomSystemEvent, testGetPackageInfo, testGetScene, testQueryPermission, testRequestPermission } from '../lib/api/tests/app'
+import { testEmitCustomSystemEvent, testGetPackageInfo, testGetScene, testQueryPermission, testRequestPermission } from '../lib/api-tests/app'
 import { showToast } from '../lib/api/ui'
+import { TestSreen } from '../lib/TestScreen'
 
 function reqPermCB (result) {
   showToast({ text: JSON.stringify(result) })

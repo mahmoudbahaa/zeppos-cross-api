@@ -1,5 +1,4 @@
 /* global Page */
-import { TestSreen } from '../lib/TestScreen'
 import {
   testGetAutoBrightness,
   testGetBrightness,
@@ -14,7 +13,8 @@ import {
   testSetPageBrightTime,
   testSetScreenOff,
   testSetWakeUpRelaunch
-} from '../lib/api/tests/display'
+} from '../lib/api-tests/display'
+import { TestSreen } from '../lib/TestScreen'
 
 Page({
   onInit () {

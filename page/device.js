@@ -1,6 +1,6 @@
 /* global Page */
+import { testGetDeviceInfo, testGetDiskInfo, testScreenShape } from '../lib/api-tests/device'
 import { TestSreen } from '../lib/TestScreen'
-import { testGetDeviceInfo, testGetDiskInfo, testScreenShape } from '../lib/api/tests/device'
 
 Page({
   onInit () {

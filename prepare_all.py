@@ -77,10 +77,10 @@ def createProject(APi_LEVEL):
   for target_id in targets:
     icon_size = targets[target_id]
     assets_dir = project / "assets" / (target_id + (".r" if APi_LEVEL =="3.0" else ""))
-    if (not assets_dir.exists()):
-      assets_dir.mkdir()
+    if assets_dir.exists():
+      assets_dir.rmdir()
 
-    shutil.copy(common_assets / "icon.png", assets_dir / "icon.png")
+    shutil.copytree(common_assets, assets_dir)
     # App.json
     app_json["targets"][target_id]["module"] = {
       "page": {

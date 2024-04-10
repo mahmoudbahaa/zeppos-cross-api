@@ -1,6 +1,6 @@
 /* global Page */
 import { TestSreen } from '../lib/TestScreen'
-import { testAlarmCancel, testAlarmSet, testGetAllAlarms } from '../lib/api/tests/alarm'
+import { testAlarmCancel, testAlarmSet, testGetAllAlarms } from '../lib/api-tests/alarm'
 
 const thisFile = 'page/home'
 
