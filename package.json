@@ -1,28 +1,28 @@
 {
   "name": "zeppos-cross-api",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Cross-API library for ZeppOS for using 3.0 API and creating 1.0, 2.0, 3.0+ projects",
   "zeppos": true,
   "bin": "./bin.js",
   "exports": {
-    "./alarm": "./processed/lib/api/alaram",
-    "./app": "./processed/lib/api/app",
-    "./ble": "./processed/lib/api/ble",
-    "./device": "./processed/lib/api/device",
-    "./display": "./processed/lib/api/display",
-    "./fs": "./processed/lib/api/fs",
-    "./i18n": "./processed/lib/api/i18n",
-    "./interaction": "./processed/lib/api/interaction",
-    "./media": "./processed/lib/api/media",
-    "./notification": "./processed/lib/api/notification",
-    "./page": "./processed/lib/api/page",
-    "./router": "./processed/lib/api/router",
-    "./sensor": "./processed/lib/api/sensor",
-    "./settings": "./processed/lib/api/settings",
-    "./storage": "./processed/lib/api/storage",
-    "./ui": "./processed/lib/api/ui",
-    "./user": "./processed/lib/api/user",
-    "./utils": "./processed/lib/api/utils"
+    "./alarm": "./processed/lib/api/alaram.js",
+    "./app": "./processed/lib/api/app.js",
+    "./ble": "./processed/lib/api/ble.js",
+    "./device": "./processed/lib/api/device.js",
+    "./display": "./processed/lib/api/display.js",
+    "./fs": "./processed/lib/api/fs.js",
+    "./i18n": "./processed/lib/api/i18n.js",
+    "./interaction": "./processed/lib/api/interaction.js",
+    "./media": "./processed/lib/api/media.js",
+    "./notification": "./processed/lib/api/notification.js",
+    "./page": "./processed/lib/api/page.js",
+    "./router": "./processed/lib/api/router.js",
+    "./sensor": "./processed/lib/api/sensor.js",
+    "./settings": "./processed/lib/api/settings.js",
+    "./storage": "./processed/lib/api/storage.js",
+    "./ui": "./processed/lib/api/ui.js",
+    "./user": "./processed/lib/api/user.js",
+    "./utils": "./processed/lib/api/utils.js"
   },
   "types": "./index.d.ts",
   "directories": {
@@ -62,9 +62,5 @@
   "dependencies": {
     "preprocessor": "^1.4.0",
     "yargs": "^17.7.2"
-  },
-  "files": [
-    "lib/api/**",
-    "index.d.ts"
-  ]
+  }
 }
