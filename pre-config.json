@@ -3,7 +3,24 @@
   "sync": true,
   "apis": ["1.0", "2.0", "3.0"],
   "pages": [
-    "home"
+    "home",
+    "alarm",
+    "app",
+    "ble",
+    "device",
+    "display",
+    "fs",
+    "i18n",
+    "interaction",
+    "notification",
+    "page",
+    "router",
+    "sensor",
+    "settings",
+    "storage",
+    "ui",
+    "user",
+    "utils"
   ],
   "module": {},
   "sources": [
