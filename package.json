@@ -22,7 +22,10 @@
     "./storage": "./processed/lib/api/storage.js",
     "./ui": "./processed/lib/api/ui.js",
     "./user": "./processed/lib/api/user.js",
-    "./utils": "./processed/lib/api/utils.js"
+    "./utils": "./processed/lib/api/utils.js",
+    "./device-polyfill": "./processed/lib/api/zeppos/device-polyfill.js",
+    "./message-side": "./processed/lib/api/zeppos/message-side.js",
+    "./message": "./processed/lib/api/zeppos/message.js"
   },
   "types": "./index.d.ts",
   "directories": {
