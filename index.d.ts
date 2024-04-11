@@ -261,11 +261,26 @@ declare module 'zeppos-cross-api/app' {
    */
   const SCENE_AOD: number
   namespace getPackageInfo {
+    interface IHmAppPackageInfo {
+      name: string
+      type: string
+      version: { code: number, name: string }
+      icon: string
+      appId: number
+      description: string
+      vender: string
+      permissions: Array<string>
+      pages: Array<string>
+      [key: string]: any;
+    }
+
+    // interface IHmAppPackageExtraInfo = object
+
     /**
      * @zh 此处不一一列举，请参考 `app.json` 中字段
      * @en Please see the fields in `app.json` for more details
      */
-    type Result = object
+    type Result = IHmAppPackageInfo
   }
 
   /**
@@ -1853,7 +1868,7 @@ declare module 'zeppos-cross-api/device' {
        * @zh 设备名称
        * @en Device name
        */
-      deviceName: number
+      deviceName: string
       /**
        * @zh 按键数目
        * @en Number of keys
@@ -2880,7 +2895,15 @@ declare module 'zeppos-cross-api/fs' {
    */
   function readdirSync(option: readdirSync.Option): readdirSync.Result
   namespace readFileSync {
-    interface Option {
+    interface Option1 {
+      /**
+       * @zh 文件路径
+       * @en path
+       */
+      path: string
+    }
+
+    interface Option2 {
       /**
        * @zh 文件路径
        * @en path
@@ -2890,7 +2913,7 @@ declare module 'zeppos-cross-api/fs' {
        * @zh 其他选项
        * @en Other Options
        */
-      options?: Options
+      options: Options
     }
 
     interface Options {
@@ -2898,14 +2921,16 @@ declare module 'zeppos-cross-api/fs' {
        * @zh 当指定了编码方式之后，API 返回结果为 `string`
        * @en When the encoding method is specified, the API returns `string` as the result
        */
-      encoding?: string
+      encoding: string
     }
 
     /**
      * @zh 文件内容。如果返回 `undefined`，则表明读取文件失败
      * @en File content. If `undefined` is returned, the file failed to be read
      */
-    type Result = ArrayBuffer | string | undefined
+    type Result1 = ArrayBuffer | undefined
+
+    type Result2 = string | undefined
   }
 
   /**
@@ -2927,9 +2952,10 @@ declare module 'zeppos-cross-api/fs' {
    * })
    * ```
    */
-  function readFileSync(option: readFileSync.Option): readFileSync.Result
+  function readFileSync(option: readFileSync.Option1): readFileSync.Result1
+  function readFileSync(option: readFileSync.Option2): readFileSync.Result2
   namespace writeFileSync {
-    interface Option {
+    interface Option1 {
       /**
        * @zh 文件路径或者文件句柄
        * @en File path or file descriptor
@@ -2939,12 +2965,25 @@ declare module 'zeppos-cross-api/fs' {
        * @zh 写入目标文件的数据
        * @en Data to be written to the target file
        */
-      data: ArrayBuffer | string | DataView
+      data: ArrayBuffer | DataView
+    }
+
+    interface Option2 {
+      /**
+       * @zh 文件路径或者文件句柄
+       * @en File path or file descriptor
+       */
+      path: string | number
+      /**
+       * @zh 写入目标文件的数据
+       * @en Data to be written to the target file
+       */
+      data: string
       /**
        * @zh 其他选项
        * @en Other Options
        */
-      options?: Options
+      options: Options
     }
 
     interface Options {
@@ -2953,7 +2992,7 @@ declare module 'zeppos-cross-api/fs' {
        * @en If the `data` format is `string`, you need to specify the encoding method
        * @defaultValue utf8
        */
-      encoding?: string
+      encoding: string
     }
   }
 
@@ -2979,7 +3018,9 @@ declare module 'zeppos-cross-api/fs' {
    * })
    * ```
    */
-  function writeFileSync(option: writeFileSync.Option): void}
+  function writeFileSync(option: writeFileSync.Option1): void
+  function writeFileSync(option: writeFileSync.Option2): void
+}
 declare namespace App {
     interface Option {
         /**
@@ -8057,7 +8098,7 @@ declare module 'zeppos-cross-api/utils' {
      * @zh 根据机型实际宽度进行缩放计算后的像素值
      * @en Pixel values after scaling calculation
      */
-    type Result = string
+    type Result = number
   }
 
   /**
@@ -8385,7 +8426,7 @@ declare module 'zeppos-cross-api/ui' {
             type HmUIAttributeType = number;
             type HmUIStyleType = number;
             type HmUIPropertyType = number;
-            type HmUIPropertyValue = string | number | boolean | undefined;
+            type HmUIPropertyValue = string | number | boolean | object | undefined;
 
             interface IHmUIWidget {
                 getId(): number;
@@ -8418,11 +8459,13 @@ declare module 'zeppos-cross-api/ui' {
                 getVisibility(): boolean;
                 setVisibility(show: boolean): boolean;
                 destroy(): boolean;
+                /* For Group and view Container */
+                createWidget(widgetType: HmUIWidgetType, options: HmUIWidgetOptions): IHmUIWidget;
             }
 
             type HmUIWidgetOptions = Record<
                         string,
-                        number | string | IHmUIEventListener | undefined | null | Record<string, any>
+                        number | string | boolean | IHmUIEventListener | undefined | null | Record<string, any>
                       >;
             type HmUIWidgetType = number;
 
