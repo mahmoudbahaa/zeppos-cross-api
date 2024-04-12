@@ -16,11 +16,11 @@
 
 # <div align="center"> ZeppOS cross-api library </div>
 
-## 📝 Table of Contents
+# 📝 Table of Contents
 
 - [About](#about)
 - [Usage](#usage)
-- [Status](#status)
+- [Support Status](#status)
 - [Built Using](#built_using)
 - [Authors](#authors)
 - [Acknowledgments](#acknowledgement)
@@ -33,18 +33,17 @@ Advanced Topics
 - [TODO](./readme-ext/TODO.md)
 - [Contributing](./readme-ext/CONTRIBUTING.md)
 
-## 🧐 About <a name = "about"></a>
+# 🧐 About <a name = "about"></a>
 
 Write Once deploy on multiple API_LEVEL as minimum.
 
-You write using API_LEVEL 3.0 then generate 3 whole project folders:
-* one for 1.0
-* one for 2.0
-* one for 3.0
+You write using API_LEVEL 3.0 then you can Change min API level of your project on the fly just with one command and same codebase.
 
-Or Change API level of your project on the fly just with one command and same codebase
+***** Although the functionality is almost complete. Testing is not yet complete and expect to find bugs/issues. You can consider this library in beta. 
 
-## 🏁 Usage <a name = "Usage"></a>
+***** Please report any issues found [here](https://github.com/mahmoudbahaa/zeppos-cross-api/issues) or create a pull request. Thanks in advance
+
+# 🏁 Usage <a name = "Usage"></a>
 
 ```
 npm i zeppos-cross-api
@@ -55,12 +54,27 @@ then run
 ```
 npx zeppos-cross-api --api-level=X.0
 ```
-where X is 1, 2 or 3 according to your project ( you still write your code using API_LEVEL 3) and can changethe min API again as easily as running above command again with new API_LEVEL
+where X is 1, 2 or 3 according to your project ( you still write your code using API_LEVEL 3) and can change the min API again as easily as running above command again with new API_LEVEL
 
 then replace each instance of '@zepos' with 'zeppos-cross-api' and you good to go
 
+use try and catch with new functionality with sensible fallbacks for new APIs see status for details. for example
 
-## :dart: Status <a name = "status"></a>
+```
+try {
+  const player = create(id.PLAYER)
+} catch (error) {
+  do something else
+}
+```
+In addition to the modules in 3.0 There is four 4 new modules (sources [here](https://github.com/zepp-health/zeppos-samples/tree/main/application/2.0/fetch-api/shared) and [here](https://github.com/zepp-health/zeppos-samples/tree/main/application/1.0/fetch-api/shared)):
+
+1. `device-polyfill` must import in app.js for settimeout and promise to work
+2. `data-conversion` contains very usefull functions like `str2bin` to convert from `string` to `ArrayBuffer` and `bin2str` for viceversa.
+3. `message-side` containes MessageBuilder for Side App (include in side js)
+4. `message` containes MessageBuilder for Device App (include in app.js)
+
+# :dart: SUPPORT STATUS <a name = "status"></a>
 
 For each of non-supported function we either have
 
@@ -77,8 +91,6 @@ For each module of each API_LEVEL there is 5 level of support:
 6. WONT_SUPPORT (it is only availaible for 3.0 and can't/won't be implemented in 1.0/2.0)
     * `@zos/app-service` No alternative so can't use if you need to be cross-api
     * `@zos/transfer-file` Use MessageBuilder ployfill instead
-
-### SUPPORT STATUS
 
 
 | Module                                 | 3.0     |   2.0      |   1.0   |
@@ -104,25 +116,23 @@ For each module of each API_LEVEL there is 5 level of support:
 | [@zos/user](#user)                     | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
 | @zos/utils                             | 🟩 FULL | 🟩 FULL    | 🟩 FULL    |
 
-### Unsupported functions:
-
 Listing unsupported function only for 🟧 PARTIAL and 🟥 NONE*
 
-### Alarm @zos/alarm <a name = "alarm"></a>
+## @zos/alarm <a name = "alarm"></a>
 
-#### API_LEVEL 2.0 and 1.0
+API_LEVEL 2.0 and 1.0:
 
 * repeat_type in set => ERROR
 
-### APP  @zos/app <a name = "app"></a>
+## @zos/app <a name = "app"></a>
 
-#### API_LEVEL 2.0 and 1.0
+API_LEVEL 2.0 and 1.0:
 
 * emitCustomSystemEvent => ERROR
 
-### BLE @zos/ble <a name = "ble"></a>
+## @zos/ble <a name = "ble"></a>
 
-#### API_LEVEL 2.0 and 1.0
+API_LEVEL 2.0 and 1.0:
 
 * mstBuildProfile => ERROR
 * mstConnect => ERROR
@@ -149,41 +159,41 @@ Listing unsupported function only for 🟧 PARTIAL and 🟥 NONE*
 * mstWriteCharacteristic => ERROR
 * mstWriteDescriptor => ERROR
 
-### DISPLAY @zos/display <a name = "display"></a>
+## @zos/display <a name = "display"></a>
 
-#### API_LEVEL 2.0 and 1.0
+API_LEVEL 2.0 and 1.0:
 
 * getSettings => ERROR
 
-#### API_LEVEL 1.0 only
+API_LEVEL 1.0 only:
 
 * pauseDropWristScreenOff => NOOP (but return non-zero indicating non-sucess code)
 * resetDropWristScreenOff => NOOP (but return non-zero indicating non-sucess code)
 * pausePalmScreenOff => NOOP (but return non-zero indicating non-sucess code)
 * resetPalmScreenOff => NOOP (but return non-zero indicating non-sucess code)
 
-### NOTIFICATION @zos/notification <a name = "notification"></a>
+## @zos/notification <a name = "notification"></a>
 
-#### API_LEVEL 2.0 and 1.0
+API_LEVEL 2.0 and 1.0:
 
 * notify =>  NOOP (return 0 for non success)
 * cancel => NOOP
 * getAllNotifications => NOOP (return empty array)
 
-### PAGE @zos/page <a name = "page"></a>
+## @zos/page <a name = "page"></a>
 
-#### API_LEVEL 1.0
+API_LEVEL 1.0:
 
 * setScrollLock => ERROR
 
-### ROUTER @zos/router <a name = "router"></a>
+## @zos/router <a name = "router"></a>
 
-#### API_LEVEL 2.0 and 1.0
+API_LEVEL 2.0 and 1.0:
 
 * ALL SYSTEM_APP constants are undefined
 * checkSystemApp => NOOP
 
-### SENSOR @zos/sensor <a name = "sensor"></a>
+## @zos/sensor <a name = "sensor"></a>
 
 |     Sensor      |   3.0      |   2.0      |   1.0   |
 |:---------------:|:-----------|:-----------|:--------|
@@ -212,40 +222,40 @@ Listing unsupported function only for 🟧 PARTIAL and 🟥 NONE*
 | WorldClock      | 🟩 FULL    | 🟥 MISSING | 🟩 FULL    |
 
 
-### SETTINGS @zos/settings <a name = "settings"></a>
+## @zos/settings <a name = "settings"></a>
 
-#### API_LEVEL 2.0 and 1.0
+API_LEVEL 2.0 and 1.0:
 
 * getSystemMode => ERROR
 
-### UI @zos/ui <a name = "ui"></a>
+## @zos/ui <a name = "ui"></a>
 
-#### API_LEVEL 1.0
+API_LEVEL 1.0:
 
 * getImageInfo => ERROR
 * redraw => NOOP
 * setAppWidgetSize => ERROR
 * getAppWidgetSize => ERROR
 
-#### As for Wdigets:
+As for Wdigets: (Warning: They wont throw an error but they will return `undefined` for `createWidget`):
 
-#### Not Found in 2.0 and 1.0
+Not Found in 2.0 and 1.0:
 
 * [CANVAS](https://docs.zepp.com/docs/reference/device-app-api/newAPI/ui/widget/CANVAS/)
 * [PAGE_SCROLLBAR](https://docs.zepp.com/docs/reference/device-app-api/newAPI/ui/widget/PAGE_SCROLLBAR/)
 * [KEYBOARD](https://docs.zepp.com/docs/reference/device-app-api/newAPI/ui/widget/KEYBOARD/)
 * [PICKER](https://docs.zepp.com/docs/reference/device-app-api/newAPI/ui/widget/PICKER/)
 
-#### Not found in 1.0
+Not found in 1.0:
 
 * [POLYLINE](https://docs.zepp.com/docs/reference/device-app-api/newAPI/ui/widget/GRADIENT_POLYLINE/)
 * [PAGE_INDICATOR](https://docs.zepp.com/docs/reference/device-app-api/newAPI/ui/widget/PAGE_INDICATOR/)
 * [VIEW_CONTAINER](https://docs.zepp.com/docs/reference/device-app-api/newAPI/ui/widget/VIEW_CONTAINER/)
 
 
-### USER @zos/user <a name = "user"></a>
+## @zos/user <a name = "user"></a>
 
-### API_LEVEL 2.0 and 1.0
+API_LEVEL 2.0 and 1.0:
 
 * addHealthData => ERROR
 
