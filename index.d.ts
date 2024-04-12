@@ -8791,6 +8791,84 @@ namespace NMessageBuilder {
   }
 }
 
+declare module 'zeppos-cross-api/media' {
+
+  enum IId {
+    PLAYER,
+    RECORDER
+  }
+
+  const id: IId
+
+  interface ICodec {
+    OPUS: number
+  }
+
+  interface ISource {
+    FILE: number
+  }
+
+  const codec: ICodec
+
+  interface IMediaInfo {
+    title: string | undefined
+    artist: string | undefined
+    duration: number
+  }
+
+  interface IPlayerEvent {
+    PREPARE: number
+    COMPLETE: number
+  }
+
+  interface IPlayerState {
+    IDLE: number
+    INITIALIZED: number
+    PREPARING: number
+    PREPARED: number
+    STARTED: number
+    PAUSED: number
+    STOPPED: number
+  }
+
+  namespace media {
+    class Base {
+      start(): void
+      stop(): void
+      addEventListener(callback: function): void
+    }
+
+    class Recorder extends Base {
+      setFormat(codec: codec.OPUS, param: {target_file: string}): void
+    }
+
+    class Player extends Base {
+      source: ISource
+      event: IPlayerEvent
+      state: IPlayerState
+
+      prepare(): void
+      pause(): void
+      resume(): void
+      release(): void
+
+      getVolume(): number
+      setVolume(vol: number): boolean
+      getTitle(): string | undefined
+      getArtist(): string | undefined
+      getMediaInfo(): IMediaInfo
+      getStatus(): IPlayerState
+      getDuration(): number
+      setSource(source: ISource, {file: string}): void
+
+      addEventListener(event: IPlayerEvent, callback: function): void
+    }
+  }
+
+  function create(id: IId.PLAYER): media.Player
+  function create(id: IId.RECORDER): media.Recorder
+}
+
 declare module 'zeppos-cross-api/device-polyfill' {}
 
 declare module 'zeppos-cross-api/data-conversion' {
