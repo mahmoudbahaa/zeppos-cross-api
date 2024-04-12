@@ -24,6 +24,7 @@
     "./user": "./processed/lib/api/user.js",
     "./utils": "./processed/lib/api/utils.js",
     "./device-polyfill": "./processed/lib/api/zeppos/device-polyfill.js",
+    "./data-conversion": "./processed/lib/api/zeppos/data.js",
     "./message-side": "./processed/lib/api/zeppos/message-side.js",
     "./message": "./processed/lib/api/zeppos/message.js"
   },

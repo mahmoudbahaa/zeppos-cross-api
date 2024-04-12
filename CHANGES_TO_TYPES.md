@@ -14,3 +14,4 @@
     1.  one with `encoding` that accept `string | undefined`
     2.  one without `encoding` that accept `ArrayBuffer | undefined`
 10. Changed `state` of `Page` from `object` to `any`
+11. Allowed any key in `Page.Option` by adding `[key: string]: any;`

@@ -3097,7 +3097,7 @@ declare namespace getApp {
          * @zh app 实例上的挂载的数据对象
          * @en mounted data objects on app instances
          */
-        globalData?: object;
+        globalData?: any;
     }
 }
 
@@ -3131,7 +3131,7 @@ declare namespace Page {
          * @zh page 实例上挂载的数据对象，可用于存储当前页面的状态
          * @en A data object mounted on a page instance that can be used to store the state of the current page
          */
-        state?: object;
+        state?: any;
         /**
          * @zh 页面初始化完成时触发，每个页面只触发一次，可以用来初始化 page 状态。如果是通过 router 模块中相关方法打开页面，并且携带 params 参数，则在 onInit 方法中可以获取到 params 字符串
          * @en It is triggered once per page and can be used to initialize the page state. If the page is opened by the relevant method in the router module with params parameters, the params string can be retrieved in the onInit method
@@ -3147,6 +3147,7 @@ declare namespace Page {
          * @en The `onDestroy` lifecycle function is triggered when the page is destroyed
          */
         onDestroy?: () => void;
+        [key: string]: any;
     }
 
     /**
@@ -8791,6 +8792,50 @@ namespace NMessageBuilder {
 }
 
 declare module 'zeppos-cross-api/device-polyfill' {}
+
+declare module 'zeppos-cross-api/data-conversion' {
+  function len(binOrBuf: Buffer | ArrayBuffer): number
+
+  function allocOfBin(size?: number): ArrayBuffer
+
+  function allocOfBuf(size?: number): Buffer
+
+  // ============= JSON =============
+
+  function json2buf(json: any): Buffer
+  
+  function json2bin(json: any): ArrayBuffer
+
+  function json2str(json: any): string
+
+  // ============= Buffer =============
+
+  function buf2json(buf: Buffer, encoding?: string): any
+
+  function buf2bin(buf: Buffer): ArrayBuffer
+
+  function buf2str(buf: Buffer, encoding?: string): string
+  
+  function buf2hex(buf: Buffer): string
+
+  // ============= ArrayBuffer =============
+
+  function bin2buf(bin: ArrayBuffer): Buffer
+
+  function bin2str(bin: ArrayBuffer, encoding?: string): string
+
+  function bin2hex(bin: ArrayBuffer): string
+
+  function bin2json(bin: ArrayBuffer, encoding?: string): any
+
+  // ============= string =============
+
+  function str2json(str: string): any
+
+  function str2buf(str: string, encoding?: string): Buffer
+  
+  function str2bin(str: string, encoding?: string): ArrayBuffer
+}
 
 declare module 'zeppos-cross-api/message' {
   class MessageBuilder extends NMessageBuilder.MessageBuilder {}
