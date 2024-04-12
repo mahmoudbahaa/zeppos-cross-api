@@ -1,13 +1,13 @@
 <div align="center">
   <a href="" rel="noopener">
- <img width=128px height=128px src="https://raw.githubusercontent.com/mahmoudbahaa/zeppos-cross-api-polyfill/main/assets/common/icon.png" alt="Project logo"></a>
+ <img width=128px height=128px src="https://raw.githubusercontent.com/mahmoudbahaa/zeppos-cross-api/main/assets/common/icon.png" alt="Project logo"></a>
 </div>
 
 <div align="center">
 
 [![Status](https://img.shields.io/badge/status-active-success.svg)]()
-[![GitHub Issues](https://img.shields.io/github/issues/mahmoudbahaa/zeppos-cross-api-polyfill.svg)](https://github.com/mahmoudbahaa/zeppos-cross-api-polyfill/issues)
-[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/mahmoudbahaa/zeppos-cross-api-polyfill.svg)](https://github.com/mahmoudbahaa/zeppos-cross-api-polyfill/pulls)
+[![GitHub Issues](https://img.shields.io/github/issues/mahmoudbahaa/zeppos-cross-api.svg)](https://github.com/mahmoudbahaa/zeppos-cross-api/issues)
+[![GitHub Pull Requests](https://img.shields.io/github/issues-pr/mahmoudbahaa/zeppos-cross-api.svg)](https://github.com/mahmoudbahaa/zeppos-cross-api/pulls)
 [![License](https://img.shields.io/badge/license-APACHE-blue.svg)](/LICENSE)
 
 </div>
@@ -73,7 +73,7 @@ then replace each instance of '@zepos' with 'zeppos-cross-api' and you good to g
 
 - [@mahmoudbahaa](https://github.com/mahmoudbahaa) - Idea & Initial work
 
-See also the list of [contributors](https://github.com/mahmoudbahaa/zeppos-cross-api-polyfill/contributors) who participated in this project.
+See also the list of [contributors](https://github.com/mahmoudbahaa/zeppos-cross-api/contributors) who participated in this project.
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 
@@ -81,4 +81,4 @@ See also the list of [contributors](https://github.com/mahmoudbahaa/zeppos-cross
 
 ## :memo: License <a name = "license"></a>
   
-  This project is under license from Apache License V2. For more details, see the [LICENSE](https://raw.githubusercontent.com/mahmoudbahaa/zeppos-cross-api-polyfill/main/LICENSE) file.
+  This project is under license from Apache License V2. For more details, see the [LICENSE](./LICENSE) file.
