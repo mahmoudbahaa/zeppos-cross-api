@@ -3,7 +3,7 @@
   "version": "1.0.13",
   "description": "Cross-API library for ZeppOS for using 3.0 API and creating 1.0, 2.0, 3.0+ projects",
   "zeppos": true,
-  "bin": "./bin.js",
+  "bin": "./bin/bin.js",
   "exports": {
     "./alarm": "./processed/lib/api/alaram.js",
     "./app": "./processed/lib/api/app.js",
@@ -65,9 +65,8 @@
   },
   "files": [
     "lib/api",
+    "bin",
     "README.md",
-    "index.d.ts",
-    "bin.js",
-    "Preprocessor.js"
+    "index.d.ts"
   ]
 }
