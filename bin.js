@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 const fs = require('fs')
-const yargs = require('yargs')
-const Preprocessor = require('preprocessor')
+const Preprocessor = require('./Preprocessor')
+const { argv } = require('process')
 const folder = 'node_modules/zeppos-cross-api/'
 
 /**
@@ -29,12 +29,14 @@ function preprocess (source, target, apiLevel) {
   }
 }
 
-if (yargs.argv['api-level'] === true) {
+if (!argv[2].startsWith('--api-level=')) {
   console.log('No value specified for api-level')
+  console.log('must specify api-level using --api-level=X where X is 1.0, 2.0 or 3.0')
 } else {
-  const apiLevel = Number(yargs.argv['api-level'])
+  const apiLevel = Number(argv[2].substring('--api-level='.length))
   if (apiLevel !== 1 && apiLevel !== 2 && apiLevel !== 3) {
-    console.log('must specify api-level using --api-level=X where X is 1.0, 2.0 or 3.0')
+    console.log('No valid api-level specified')
+    console.log('valid api-level are 1.0, 2.0 or 3.0')
   } else {
     if (fs.existsSync(folder + 'processed')) fs.rmSync(folder + 'processed', { recursive: true, force: true })
     fs.mkdirSync(folder + 'processed')
