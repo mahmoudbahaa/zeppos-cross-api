@@ -8793,45 +8793,36 @@ namespace NMessageBuilder {
 
 declare module 'zeppos-cross-api/media' {
 
-  enum IId {
-    PLAYER,
-    RECORDER
-  }
-
-  const id: IId
-
-  interface ICodec {
-    OPUS: number
-  }
-
-  interface ISource {
-    FILE: number
-  }
-
-  const codec: ICodec
-
-  interface IMediaInfo {
-    title: string | undefined
-    artist: string | undefined
-    duration: number
-  }
-
-  interface IPlayerEvent {
-    PREPARE: number
-    COMPLETE: number
-  }
-
-  interface IPlayerState {
-    IDLE: number
-    INITIALIZED: number
-    PREPARING: number
-    PREPARED: number
-    STARTED: number
-    PAUSED: number
-    STOPPED: number
-  }
-
   namespace media {
+    interface IMediaInfo {
+      title: string | undefined
+      artist: string | undefined
+      duration: number
+    }
+  
+    enum ICodec {
+      OPUS
+    }
+
+    enum ISource {
+      FILE
+    }
+
+    enum IPlayerEvent {
+      PREPARE,
+      COMPLETE
+    }
+  
+    enum IPlayerState {
+      IDLE,
+      INITIALIZED,
+      PREPARING,
+      PREPARED,
+      STARTED,
+      PAUSED,
+      STOPPED
+    }
+
     class Base {
       start(): void
       stop(): void
@@ -8839,13 +8830,14 @@ declare module 'zeppos-cross-api/media' {
     }
 
     class Recorder extends Base {
-      setFormat(codec: codec.OPUS, param: {target_file: string}): void
+      codec = ICodec
+      setFormat(codec: ICodec, param: {target_file: string}): void
     }
 
     class Player extends Base {
-      source: ISource
-      event: IPlayerEvent
-      state: IPlayerState
+      source = ISource
+      event = IPlayerEvent
+      state = IPlayerState
 
       prepare(): void
       pause(): void
@@ -8865,8 +8857,13 @@ declare module 'zeppos-cross-api/media' {
     }
   }
 
-  function create(id: IId.PLAYER): media.Player
-  function create(id: IId.RECORDER): media.Recorder
+  enum id {
+    PLAYER,
+    RECORDER
+  }
+
+  function create(i: id.PLAYER): media.Player
+  function create(i: id.RECORDER): media.Recorder
 }
 
 declare module 'zeppos-cross-api/device-polyfill' {}
