@@ -1,6 +1,6 @@
 {
   "name": "zeppos-cross-api",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Cross-API library for ZeppOS for using 3.0 API and creating 1.0, 2.0, 3.0+ projects",
   "zeppos": true,
   "bin": "./bin/bin.js",
