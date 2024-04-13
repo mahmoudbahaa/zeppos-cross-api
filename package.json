@@ -6,8 +6,10 @@
   "bin": "./bin/bin.js",
   "exports": {
     "./alarm": "./processed/lib/api/alaram.js",
+    "./app-service": "./processed/lib/api/app-service.js",
     "./app": "./processed/lib/api/app.js",
     "./ble": "./processed/lib/api/ble.js",
+    "./bleTransferFile": "./processed/lib/api/bleTransferFile.js",
     "./device": "./processed/lib/api/device.js",
     "./display": "./processed/lib/api/display.js",
     "./fs": "./processed/lib/api/fs.js",
@@ -20,6 +22,7 @@
     "./sensor": "./processed/lib/api/sensor.js",
     "./settings": "./processed/lib/api/settings.js",
     "./storage": "./processed/lib/api/storage.js",
+    "./transfer-file": "./processed/lib/api/transfer-file.js",
     "./ui": "./processed/lib/api/ui.js",
     "./user": "./processed/lib/api/user.js",
     "./utils": "./processed/lib/api/utils.js",
