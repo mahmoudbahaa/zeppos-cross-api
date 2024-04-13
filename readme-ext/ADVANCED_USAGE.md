@@ -4,11 +4,9 @@ These instructions will get you a copy of the project up and running on your loc
 
  - [Node.js 14.x+](https://nodejs.org/en/download/)
  - [Python 3.8+](https://www.python.org/downloads/)
- - [preprocessor](https://github.com/dcodeIO/Preprocessor.js)
  - [watchdog](https://pypi.org/project/watchdog/)
 
 ```
-npm i preprocessor -g
 pip3 install watchdog
 ```
 
@@ -17,6 +15,9 @@ pip3 install watchdog
 clone thre repo then run inside
 
 ```
+npm i
+npm run dev
+cd test-project
 python3 prepare_all.py
 ```
 

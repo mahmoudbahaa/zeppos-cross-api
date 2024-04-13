@@ -1,6 +1,6 @@
 <div align="center">
   <a href="" rel="noopener">
- <img width=128px height=128px src="https://raw.githubusercontent.com/mahmoudbahaa/zeppos-cross-api/main/assets/common/icon.png" alt="Project logo"></a>
+ <img width=128px height=128px src="https://raw.githubusercontent.com/mahmoudbahaa/zeppos-cross-api/bd1933d8d4484de71e30ec42bb1f408e5e249f54/icon.png" alt="Project logo"></a>
 </div>
 
 <div align="center">
@@ -48,11 +48,6 @@ You write using API_LEVEL 3.0 then you can Change min API level of your project 
 
 ```
 npm i zeppos-cross-api
-```
-
-then run 
-
-```
 npx zeppos-cross-api --api-level=X.0
 ```
 where X is 1, 2 or 3 according to your project ( you still write your code using API_LEVEL 3) and can change the min API again as easily as running above command again with new API_LEVEL
