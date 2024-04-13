@@ -26,9 +26,12 @@
     "./device-polyfill": "./processed/lib/api/zeppos/device-polyfill.js",
     "./data-conversion": "./processed/lib/api/zeppos/data.js",
     "./message-side": "./processed/lib/api/zeppos/message-side.js",
-    "./message": "./processed/lib/api/zeppos/message.js"
+    "./message": "./processed/lib/api/zeppos/message.js",
+    "./zml-base-app": "./processed/lib/api/zml/device/zml-app.js",
+    "./zml-base-page": "./processed/lib/api/zml/device/zml-page.js",
+    "./zml-base-side": "./processed/lib/api/zml/side/zml-side-service.js"
   },
-  "types": "./index.d.ts",
+  "types": "./types/index.d.ts",
   "directories": {
     "lib": "lib"
   },
@@ -66,7 +69,7 @@
   "files": [
     "lib/api",
     "bin",
-    "README.md",
-    "index.d.ts"
+    "types",
+    "README.md"
   ]
 }
