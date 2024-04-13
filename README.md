@@ -32,6 +32,7 @@ Advanced Topics
 - [Test Status](./readme-ext/TEST_STATUS.md)
 - [TODO](./readme-ext/TODO.md)
 - [Contributing](./readme-ext/CONTRIBUTING.md)
+- [Change Log](./readme-ext/CHANGE_LOG.md)
 
 # 🧐 About <a name = "about"></a>
 
