@@ -2,8 +2,8 @@
 
 const fs = require('fs');
 const {argv} = require('process');
-// Const folder = 'node_modules/../dist/';
-const folder = './dist/';
+const folder = 'node_modules/zeppos-cross-api/dist/';
+// Const folder = './dist/';
 
 if (argv.length > 2 && argv[2].startsWith('--api-level=')) {
 	const apiLevel = Number(argv[2].substring('--api-level='.length));
