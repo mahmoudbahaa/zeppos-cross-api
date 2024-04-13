@@ -9,5 +9,5 @@
     },
     "rules": {
     },
-    "ignorePatterns": ["Preprocessor.js"]
+    "ignorePatterns": ["Preprocessor.js", "lib/api/zml/**"]
 }
