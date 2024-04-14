@@ -1,7 +1,6 @@
 import { getPackageInfo } from '@zos/app';
 export * from '@zos/app';
-
-const UNSUPPORTED = 'Unsupported opertaion in current API_LEVEL';
+import { U as UNSUPPORTED } from './_constants-DnfQ3JJx.js';
 
 const validPermissions = [
 	// Data:os

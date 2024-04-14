@@ -1,8 +1,7 @@
 import { getPackageInfo } from '@zos/app';
 import { setLaunchAppTimeout, clearLaunchAppTimeout } from '@zos/router';
-import { Time } from '@zos/sensor';
-
-const UNSUPPORTED = 'Unsupported opertaion in current API_LEVEL';
+import { Time as Time$1 } from '@zos/sensor';
+import { U as UNSUPPORTED } from './_constants-DnfQ3JJx.js';
 
 const currentAlarms = [];
 const REPEAT_ONCE = 0;
@@ -24,13 +23,13 @@ const set = option => {
 		throw new Error(UNSUPPORTED);
 	}
 
-	option.appid ||= getPackageInfo().appId;
+	option.appid = option.appid || getPackageInfo().appId;
 	if (option.time) {
 		option.delay = undefined;
 	}
 
 	if (option.delay) {
-		option.time = new Time().getTime() + option.delay;
+		option.time = new Time$1().getTime() + option.delay;
 	}
 
 	const alarm = setLaunchAppTimeout({

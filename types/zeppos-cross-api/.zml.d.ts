@@ -17,6 +17,12 @@ interface InstanceMethod {
     headers: Record<string, any>
     body: any
   }>
+  downloadAndTransfer: <T>(data: {
+    url: string
+  }) => Promise<{
+    status: number
+    statusText: string
+  }>
 
   fetch: <T>(data: {
     url: string

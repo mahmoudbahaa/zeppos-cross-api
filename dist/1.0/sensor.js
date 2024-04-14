@@ -1,3 +1,5 @@
+import { U as UNSUPPORTED } from './_constants-DnfQ3JJx.js';
+
 const VIBRATOR_SCENE_SHORT_LIGHT = 23;
 const VIBRATOR_SCENE_SHORT_MIDDLE = 24;
 const VIBRATOR_SCENE_SHORT_STRONG = 25;
@@ -12,8 +14,6 @@ const TIME_HOUR_FORMAT_24 = 1;
 const FREQ_MODE_LOW = 0;
 const FREQ_MODE_NORMAL = 1;
 const FREQ_MODE_HIGH = 2;
-
-const UNSUPPORTED = 'Unsupported opertaion in current API_LEVEL';
 
 class Accelerometer {
 	start() {

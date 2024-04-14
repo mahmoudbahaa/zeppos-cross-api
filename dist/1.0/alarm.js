@@ -1,6 +1,5 @@
 import { getPackageInfo } from '@zos/app';
-
-const UNSUPPORTED = 'Unsupported opertaion in current API_LEVEL';
+import { U as UNSUPPORTED } from './_constants-DnfQ3JJx.js';
 
 /* global hmApp */
 const currentAlarms = [];
@@ -23,7 +22,7 @@ const set = option => {
 		throw new Error(UNSUPPORTED);
 	}
 
-	option.appid ||= getPackageInfo().appId;
+	option.appid = option.appid || getPackageInfo().appId;
 	if (option.time) {
 		option.delay = undefined;
 	}

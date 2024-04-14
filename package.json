@@ -26,13 +26,13 @@
     "./ui": "./dist/current/ui.js",
     "./user": "./dist/current/user.js",
     "./utils": "./dist/current/utils.js",
-    "./device-polyfill": "./dist/current/zeppos/device-polyfill.js",
-    "./data-conversion": "./dist/current/zeppos/data.js",
-    "./message-side": "./dist/current/zeppos/message-side.js",
-    "./message": "./dist/current/zeppos/message.js",
-    "./zml-base-app": "./dist/current/zml/device/zml-app.js",
-    "./zml-base-page": "./dist/current/zml/device/zml-page.js",
-    "./zml-base-side": "./dist/current/zml/side/zml-side-service.js"
+    "./device-polyfill": "./dist/current/device-polyfill.js",
+    "./data-conversion": "./dist/current/data.js",
+    "./message-side": "./dist/current/message-side.js",
+    "./message": "./dist/current/message.js",
+    "./zml-base-app": "./dist/current/zml-app.js",
+    "./zml-base-page": "./dist/current/zml-page.js",
+    "./zml-base-side": "./dist/current/zml-side-service.js"
   },
   "types": "./types/index.d.ts",
   "directories": {

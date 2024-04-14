@@ -1,7 +1,6 @@
 import { BloodOxygen as BloodOxygen$1, Geolocation as Geolocation$1, HeartRate as HeartRate$1, SLEEP, Time as Time$1, Stress as Stress$1 } from '@zos/sensor';
 export * from '@zos/sensor';
-
-const UNSUPPORTED = 'Unsupported opertaion in current API_LEVEL';
+import { U as UNSUPPORTED } from './_constants-DnfQ3JJx.js';
 
 class Accelerometer {
 	start() {

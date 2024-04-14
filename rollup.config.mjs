@@ -55,28 +55,38 @@ const modules = [
 ];
 
 const exports = [];
+const inputs = {};
+
+API_LEVELS.forEach(apiLevel => {
+	inputs[apiLevel] = [];
+});
 
 modules.forEach(module => {
 	API_LEVELS.forEach(apiLevel => {
-		exports.push({
-			input: 'lib/api/' + apiLevel + '/' + module,
-			output: {
-				file: 'dist/' + apiLevel + '/' + module,
-				format: 'es',
-				plugins,
-			},
-			plugins: [
-				replace({
-					preventAssignment: true,
-					__DEBUG__: process.env.NODE_ENV === 'production' ? undefined : true,
-					__API_LEVEL__: '\'1.0\'',
-				}),
-				nodeResolve(),
-				commonjs(),
-			],
-		});
+		inputs[apiLevel].push('lib/api/' + apiLevel + '/' + module);
 	});
 });
+
+API_LEVELS.forEach(apiLevel => {
+	exports.push({
+		input: inputs[apiLevel],
+		output: {
+			dir: 'dist/' + apiLevel,
+			format: 'es',
+			plugins,
+		},
+		plugins: [
+			replace({
+				preventAssignment: true,
+				__DEBUG__: process.env.NODE_ENV === 'production' ? undefined : true,
+				__API_LEVEL__: '\'1.0\'',
+			}),
+			nodeResolve(),
+			commonjs(),
+		],
+	});
+});
+
 export default exports;
 
 // Alias({

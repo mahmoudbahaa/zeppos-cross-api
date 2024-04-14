@@ -1,6 +1,5 @@
+import { U as UNSUPPORTED } from './_constants-DnfQ3JJx.js';
 export * from '@zos/ble';
-
-const UNSUPPORTED = 'Unsupported opertaion in current API_LEVEL';
 
 const mstBuildProfile = profile => {
 	throw new Error(UNSUPPORTED);

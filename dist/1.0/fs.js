@@ -1,23 +1,4 @@
-/**
- * @param {Buffer | ArrayBuffer} binOrBuf
- * @returns {number}
- */
-
-/**
- * @param {Buffer} buf
- * @returns {string}
- */
-function buf2str (buf, encoding = 'utf-8') {
-  return buf.toString(encoding)
-}
-
-/**
- * @param {string} str
- * @returns {Buffer}
- */
-function str2buf (str, encoding = 'utf-8') {
-  return Buffer.from(str, encoding)
-}
+import { buf2str, str2buf } from './data.js';
 
 /* global hmFS */
 
@@ -43,14 +24,9 @@ const statAssetsSync = option => {
 
 const closeSync = option => typeof option === 'number' ? hmFS.close(option) : hmFS.close(option.fd);
 const readSync = option => {
-	option.options ||= {};
-	if (!option.options.length) {
-		option.options.length = option.buffer.byteLength;
-	}
-
-	if (!option.options.offset) {
-		option.options.offset = 0;
-	}
+	option.options = option.options || {};
+	option.options.length = option.options.length || option.buffer.byteLength;
+	option.options.offset = option.options.offset || 0;
 
 	if (option.options.position) {
 		hmFS.seek(option.fd, option.options.position, hmFS.SEEK_SET);
@@ -60,14 +36,9 @@ const readSync = option => {
 };
 
 const writeSync = option => {
-	option.options ||= {};
-	if (!option.options.length) {
-		option.options.length = option.buffer.byteLength;
-	}
-
-	if (!option.options.offset) {
-		option.options.offset = 0;
-	}
+	option.options = option.options || {};
+	option.options.length = option.options.length || option.buffer.byteLength;
+	option.options.offset = option.options.offset || 0;
 
 	if (option.options.position) {
 		hmFS.seek(option.fd, option.options.position, hmFS.SEEK_SET);
@@ -95,7 +66,7 @@ const readFileSync = option => {
 	readSync({fd, buffer});
 	closeSync(fd);
 
-	if (!option.options?.encoding) {
+	if (!option.options || !option.options.encoding) {
 		return buffer;
 	}
 
@@ -108,7 +79,7 @@ const writeFileSync = option => {
 		: hmFS.open(option.path, hmFS.O_WRONLY);
 
 	const buffer = typeof option.data === 'string'
-		? str2buf(option.data, option.options?.encoding)
+		? str2buf(option.data, option.options && option.options.encoding)
 		: (option.data instanceof ArrayBuffer
 			? option.data
 			: option.data.buffer);

@@ -1,13 +1,23 @@
 {
     "env": {
-        "es2021": true
+      "es2021": false,
+      "node": true
     },
     "extends": "xo",
     "parserOptions": {
-        "ecmaVersion": "latest",
+        "ecmaVersion": 6,
         "sourceType": "module"
     },
     "rules": {
+        "no-unused-vars": ["error", { "args": "none" }],
+        "no-undef": "off",
+        "logical-assignment-operators": "off"
     },
-    "ignorePatterns": ["Preprocessor.js", "lib/api/zml/**"]
+    "ignorePatterns": ["dist/**", "node_modules/**", 
+    "lib/api/1.0/zeppos/**", 
+    "lib/api/2.0/zeppos/**", 
+    "lib/api/3.0/zeppos/**",
+    "lib/api/1.0/zml/**", 
+    "lib/api/2.0/zml/**", 
+    "lib/api/3.0/zml/**"]
 }
