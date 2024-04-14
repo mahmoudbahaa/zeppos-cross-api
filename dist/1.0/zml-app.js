@@ -1,15 +1,15 @@
 import { getPackageInfo } from './app.js';
+import { openSync, O_APPEND, writeSync, closeSync } from './fs.js';
 import { log } from './utils.js';
 import { MessageBuilder } from './message.js';
-import { w as wrapperMessage } from './message-CSq473RI.js';
+import { w as wrapperMessage } from './message-CpHewxrX.js';
 import { h as httpRequest, d as downloadAndTransfer } from './httpRequest-CJ1duHAs.js';
 import './_constants-DnfQ3JJx.js';
+import './data.js';
 import './event-DwQ3RP1v.js';
 import './ble.js';
-import './data.js';
 import './defer-CYuMoFqG.js';
 import './js-module-BLu70XRo.js';
-import './fs.js';
 
 const appDevicePort = 20;
 const appSidePort = 0;
@@ -21,7 +21,24 @@ function createDeviceMessage() {
 		appSidePort,
 	});
 
-	return wrapperMessage(messageBuilder, log.getLogger('message-builder-device'));
+	const messaging = wrapperMessage(messageBuilder, log.getLogger('message-builder-device'));
+  messaging.onCall = (cb) => {
+    return messaging.onCall(payload => {
+      if (payload.method === "chunk.received") {
+        const fd = openSync({ path: cb.fileName, flag: O_APPEND });
+        writeSync({
+          fd,
+          buffer: payload.buffer
+        });
+        closeSync({ fd });
+        return
+      }
+
+      cb && cb(payload);
+    })
+  };
+
+  return messaging
 }
 
 function appPlugin(opts) {

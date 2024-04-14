@@ -1,16 +1,13 @@
 import { MessageBuilder } from './message-side.js';
-import { w as wrapperMessage } from './message-CSq473RI.js';
+import { w as wrapperMessage } from './message-CpHewxrX.js';
 import './data.js';
 import './defer-CYuMoFqG.js';
 import './event-DwQ3RP1v.js';
 import './js-module-BLu70XRo.js';
-import './fs.js';
 
 /* global Logger */
 
 const messageBuilder = new MessageBuilder();
-
-// @ts-ignore
 const messaging = wrapperMessage(messageBuilder, Logger.getLogger('message-builder-side'));
 
 function addBaseURL(opts) {

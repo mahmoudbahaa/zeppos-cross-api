@@ -1,8 +1,7 @@
-import {buf2bin, buf2json, buf2str} from '../../zeppos/data';
+import './fs.js';
+import { buf2bin, buf2str, buf2json } from './data.js';
 
 const requestTimeout = 60000;
-
-const DEBUG = false;
 
 const HM_RPC = 'hmrpcv1';
 
@@ -22,7 +21,7 @@ function isPlainObject(item) {
 	);
 }
 
-export function wrapperMessage(messageBuilder, logger) {
+function wrapperMessage(messageBuilder, logger) {
 	return {
 		requestTimeout,
 		transport: messageBuilder,
@@ -126,11 +125,6 @@ export function wrapperMessage(messageBuilder, logger) {
 			return this;
 		},
 		request(data, opts = {}) {
-			DEBUG
-        && logger.debug(
-        	'current request count=>%d',
-        	messageBuilder.getRequestCount(),
-        );
 
 			data = isPlainObject(data)
 				? opts.contentType
@@ -163,8 +157,6 @@ export function wrapperMessage(messageBuilder, logger) {
 		// 设备接口
 		connect() {
 			messageBuilder.connect(() => {
-				DEBUG
-          && logger.debug('DeviceApp messageBuilder connect with SideService');
 			});
 			return this;
 		},
@@ -173,17 +165,12 @@ export function wrapperMessage(messageBuilder, logger) {
 			this.offOnRequest();
 			this.offOnCall();
 			messageBuilder.disConnect(() => {
-				DEBUG && logger.debug('DeviceApp messageBuilder disconnect SideService');
 			});
 			return this;
 		},
 		// 伴生服务接口
 		start() {
 			messageBuilder.listen(() => {
-				DEBUG
-          && logger.debug(
-          	'SideService messageBuilder start to listen to DeviceApp',
-          );
 			});
 			return this;
 		},
@@ -192,10 +179,10 @@ export function wrapperMessage(messageBuilder, logger) {
 			this.offOnRequest();
 			this.offOnCall();
 			messageBuilder.disConnect(() => {
-				DEBUG
-          && logger.debug('SideService messageBuilder stop to listen to DeviceApp');
 			});
 			return this;
 		},
 	};
 }
+
+export { wrapperMessage as w };
