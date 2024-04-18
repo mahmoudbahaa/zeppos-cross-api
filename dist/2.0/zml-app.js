@@ -1,26 +1,27 @@
-import { h as httpRequest, a as appPlugin$1 } from './httpRequest-DXGwLP5I.js';
+import { h as httpRequest, l as loggerPlugin, a as appPlugin$1 } from './fileTransfer-plugin-DPbj0CWM.js';
+import { M as MessageBuilder, w as wrapperMessage } from './message-DvV8XCTS.js';
 import { getPackageInfo } from '@zos/app';
+import { b as ble } from './ble-DiBLOBfF.js';
 import { log } from '@zos/utils';
-import { MessageBuilder } from './message.js';
-import { w as wrapperMessage } from './message-Bs_ux96Y.js';
+import './file-transfer-btNVMsMj.js';
 import './bleTransferFile.js';
-import './file-transfer-knPiEayp.js';
-import '@zos/ble';
 import './data.js';
-import './defer-CYuMoFqG.js';
-import './js-module-CctPB5ss.js';
+import './_constants-DnfQ3JJx.js';
+import '@zos/ble';
 
 const appDevicePort = 20;
 const appSidePort = 0;
 
 function createDeviceMessage() {
-	const messageBuilder = new MessageBuilder({
-		appId: getPackageInfo().appId,
-		appDevicePort,
-		appSidePort,
-	});
+  const messageBuilder = new MessageBuilder({
+    appId: getPackageInfo().appId,
+    appDevicePort,
+    appSidePort,
+    ble,
+    logger: log.getLogger('device-message'),
+  });
 
-	return wrapperMessage(messageBuilder, log.getLogger('message-builder-device'));
+  return wrapperMessage(messageBuilder, log.getLogger('message-builder-device'));
 }
 
 function appPlugin(opts) {
@@ -45,24 +46,27 @@ function appPlugin(opts) {
   }
 }
 
+/**
+   * @type {{ onCreate?: (opts:any) => void, onDestroy?: (opts:any) => void;}[]}
+   */
+const plugins = [loggerPlugin(), appPlugin(), appPlugin$1()];
+
 function BaseApp(option) {
-	const messagingPlug = appPlugin();
-	const filePlug = appPlugin$1();
-	return {
-		...option,
-		...messagingPlug,
-		...filePlug,
-		onCreate(...opts) {
-			messagingPlug.onCreate.apply(this);
-			filePlug.onCreate.apply(this);
-			option.onCreate?.apply(this, opts);
-		},
-		onDestroy(...opts) {
-			option.onDestroy?.apply(this, opts);
-			filePlug.onDestroy.apply(this);
-			messagingPlug.onDestroy.apply(this);
-		},
-	};
+  const opts = {};
+  plugins.forEach(plugin => Object.assign(opts, plugin));
+
+  return {
+    ...option,
+    ...opts,
+    onCreate(...opts) {
+      plugins.forEach(plugin => plugin.onCreate?.apply(this, opts));
+      option.onCreate?.apply(this, opts);
+    },
+    onDestroy(...opts) {
+      option.onDestroy?.apply(this, opts);
+      plugins.reverse().forEach(plugin => plugin.onDestroy?.apply(this, opts));
+    },
+  };
 }
 
 export { BaseApp };

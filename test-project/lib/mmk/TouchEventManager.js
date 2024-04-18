@@ -1,5 +1,4 @@
 /* global hmUI */
-import '../zeppos/device-polyfill'
 export class TouchEventManager {
   /**
    * @param {HmWearableProgram.DeviceSide.HmUI.IHmUIWidget} widget

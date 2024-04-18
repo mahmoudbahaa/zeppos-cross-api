@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'production') {
 	);
 }
 
-const API_LEVELS = ['1.0', '2.0', '3.0'];
+const API_LEVELS = [/*'1.0', '2.0',*/ '3.0'];
 const modules = [
 	'alarm.js',
 	'app-service.js',
@@ -41,14 +41,10 @@ const modules = [
 	'sensor.js',
 	'settings.js',
 	'storage.js',
-	'transfer-file.js',
 	'ui.js',
 	'user.js',
 	'utils.js',
-	'zeppos/device-polyfill.js',
-	'zeppos/data.js',
-	'zeppos/message-side.js',
-	'zeppos/message.js',
+	'zml/common/data.js',
 	'zml/device/zml-app.js',
 	'zml/device/zml-page.js',
 	'zml/side/zml-side-service.js',

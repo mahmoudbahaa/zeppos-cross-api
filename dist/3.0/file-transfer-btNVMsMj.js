@@ -1,4 +1,4 @@
-export function getFileTransfer(fileTransfer) {
+function getFileTransfer(fileTransfer) {
   /**
    *     start(newfile)------------finished(file)
    *     device supported newfile and file
@@ -46,3 +46,5 @@ export function getFileTransfer(fileTransfer) {
     },
   };
 }
+
+export { getFileTransfer as g };

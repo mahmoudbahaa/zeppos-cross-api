@@ -65,10 +65,9 @@ try {
 ```
 In addition to the modules in 3.0 There is four 4 new modules (sources [here](https://github.com/zepp-health/zeppos-samples/tree/main/application/2.0/fetch-api/shared) and [here](https://github.com/zepp-health/zeppos-samples/tree/main/application/1.0/fetch-api/shared)):
 
-1. `device-polyfill` must import in app.js for settimeout and promise to work
-2. `data-conversion` contains very usefull functions like `str2bin` to convert from `string` to `ArrayBuffer` and `bin2str` for viceversa.
-3. `message-side` containes MessageBuilder for Side App (include in side js)
-4. `message` containes MessageBuilder for Device App (include in app.js)
+1. `data-conversion` contains very usefull functions like `str2bin` to convert from `string` to `ArrayBuffer` and `bin2str` for viceversa.
+2. `message-side` containes MessageBuilder for Side App (include in side js)
+3. `message` containes MessageBuilder for Device App (include in app.js)
 
 # :dart: SUPPORT STATUS <a name = "status"></a>
 
@@ -104,7 +103,6 @@ For each module of each API_LEVEL there is 5 level of support:
 | [@zos/sensor](#sensor)                 | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
 | [@zos/settings](#settings)             | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
 | [@zos/storage](#storage)               | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
-| @zos/transfer-file                     | 🟩 FULL | 🟥 NONE    | 🟥 NONE    |
 | [@zos/ui](#ui)                         | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
 | [@zos/user](#user)                     | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
 | @zos/utils                             | 🟩 FULL | 🟩 FULL    | 🟩 FULL    |
