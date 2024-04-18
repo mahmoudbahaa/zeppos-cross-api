@@ -28,7 +28,7 @@
 
 Advanced Topics
 - [Advanced Usage](/readme-ext/ADVANCED_USAGE.md)
-- [Types changes](/readme-ext/CHANGES_TO_TYPES.md)
+- [Changes done to ts types file](/readme-ext/CHANGES_TO_TYPES.md)
 - [Test Status](./readme-ext/TEST_STATUS.md)
 - [TODO](./readme-ext/TODO.md)
 - [Contributing](./readme-ext/CONTRIBUTING.md)
@@ -84,16 +84,13 @@ For each module of each API_LEVEL there is 5 level of support:
 3. 🟥 NONE  (ALL are ERROR)
 4. 🟥 NONE<sup>*</sup> (ALL are NOOP)
 5. N/A (not yet implemented)
-6. WONT_SUPPORT (it is only availaible for 3.0 and can't/won't be implemented in 1.0/2.0)
-    * `@zos/app-service` No alternative so can't use if you need to be cross-api
-    * `@zos/transfer-file` Use MessageBuilder ployfill instead
 
 
 | Module                                 | 3.0     |   2.0      |   1.0   |
 | -------------------------------------- |:--------|:-----------|:-----------|
 | [@zos/alarm](#alarm)                   | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
 | [@zos/app](#app)                       | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
-| @zos/app-service                       || WONT_SUPPORT
+| @zos/app-service                       | 🟩 FULL | 🟥 NONE    | 🟥 NONE    |
 | [@zos/ble](#ble)                       | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
 | @zos/device                            | 🟩 FULL | 🟩 FULL    | 🟩 FULL    |
 | [@zos/display](#display)               | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
@@ -107,7 +104,7 @@ For each module of each API_LEVEL there is 5 level of support:
 | [@zos/sensor](#sensor)                 | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
 | [@zos/settings](#settings)             | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
 | [@zos/storage](#storage)               | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
-| @zos/transfer-file                     || WONT_SUPPORT
+| @zos/transfer-file                     | 🟩 FULL | 🟥 NONE    | 🟥 NONE    |
 | [@zos/ui](#ui)                         | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
 | [@zos/user](#user)                     | 🟩 FULL | 🟧 PARTIAL | 🟧 PARTIAL |
 | @zos/utils                             | 🟩 FULL | 🟩 FULL    | 🟩 FULL    |
@@ -258,7 +255,7 @@ API_LEVEL 2.0 and 1.0:
 ## ⛏️ Built Using <a name = "built_using"></a>
 
 - [Zepp OS 3.0](https://docs.zepp.com/docs/intro/) - Framework
-- [preprocessor](https://github.com/dcodeIO/Preprocessor.js) - javascrit preprocessor
+- [rollup](https://rollupjs.org/)
 - [watchdog](https://pypi.org/project/watchdog/) watch folder for changes
 - modified version of [prepare_all.py](https://github.com/melianmiko/ZeppOS-Toolbox/blob/master/prepare_all.py), [app.json](https://github.com/melianmiko/ZeppOS-Toolbox/blob/master/app.json) and other files from [ZeppOS-Toolbox](https://github.com/melianmiko/ZeppOS-Toolbox) by [melianmiko](https://github.com/melianmiko)
 
