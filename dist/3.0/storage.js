@@ -1,1 +1,1 @@
-export * from '@zos/storage';
+export*from"@zos/storage";

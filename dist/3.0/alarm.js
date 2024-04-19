@@ -1,1 +1,1 @@
-export * from '@zos/alarm';
+export*from"@zos/alarm";

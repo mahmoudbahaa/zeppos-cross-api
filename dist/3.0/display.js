@@ -1,1 +1,1 @@
-export * from '@zos/display';
+export*from"@zos/display";

@@ -5,15 +5,9 @@
     "checkJs": true
   },
   "exclude": [
-    "bin/Preprocessor.js", 
-    "node_modules", 
-    "**/node_modules/*", 
-    "dist", "dist/*", 
-    "zeppos-3.0-modules/**", 
-    "1.0/**", 
-    "2.0/**", 
-    "3.0/**", 
-    "lib/api/1.0/**", 
-    "lib/api/2.0/**", 
-    "lib/zml/**",]
+    "node_modules",
+    "**/node_modules/*",
+    "dist",
+    "dist/*",
+  ]
 }

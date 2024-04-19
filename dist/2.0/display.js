@@ -1,8 +1,1 @@
-import { U as UNSUPPORTED } from './_constants-DnfQ3JJx.js';
-export * from '@zos/display';
-
-const getSettings = () => {
-	throw new Error(UNSUPPORTED);
-};
-
-export { getSettings };
+import{U as o}from"./_constants-Cre2CkpB.js";export*from"@zos/display";const r=()=>{throw new Error(o)};export{r as getSettings};

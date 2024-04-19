@@ -1,12 +1,1 @@
-import { U as UNSUPPORTED } from './_constants-DnfQ3JJx.js';
-
-const create = id => {
-	throw new Error(UNSUPPORTED);
-};
-
-const id = {
-	PLAYER: 0,
-	RECORDER: 1,
-};
-
-export { create, id };
+import{U as o}from"./_constants-Cre2CkpB.js";const r=r=>{throw new Error(o)},t={PLAYER:0,RECORDER:1};export{r as create,t as id};

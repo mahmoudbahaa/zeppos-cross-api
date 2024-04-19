@@ -1,1 +1,1 @@
-export * from '@zos/app';
+export*from"@zos/app";

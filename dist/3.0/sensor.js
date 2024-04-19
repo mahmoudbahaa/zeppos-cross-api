@@ -1,1 +1,1 @@
-export * from '@zos/sensor';
+export*from"@zos/sensor";

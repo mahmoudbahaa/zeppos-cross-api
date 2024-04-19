@@ -1,8 +1,1 @@
-import { U as UNSUPPORTED } from './_constants-DnfQ3JJx.js';
-export * from '@zos/settings';
-
-const getSystemMode = () => {
-	throw new Error(UNSUPPORTED);
-};
-
-export { getSystemMode };
+import{U as o}from"./_constants-Cre2CkpB.js";export*from"@zos/settings";const r=()=>{throw new Error(o)};export{r as getSystemMode};

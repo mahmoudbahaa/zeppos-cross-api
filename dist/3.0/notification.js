@@ -1,1 +1,1 @@
-export * from '@zos/notification';
+export*from"@zos/notification";

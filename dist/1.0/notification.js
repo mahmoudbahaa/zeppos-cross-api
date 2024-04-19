@@ -1,5 +1,1 @@
-const notify = (option) => { return 0 /* Failure code */ };
-const cancel = (notificationId) => { /* NOOP */ };
-const getAllNotifications = () => { return [] };
-
-export { cancel, getAllNotifications, notify };
+const o=o=>0,t=o=>{},c=()=>[];export{t as cancel,c as getAllNotifications,o as notify};

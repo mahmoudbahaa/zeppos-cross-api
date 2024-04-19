@@ -1,1 +1,1 @@
-export * from '@zos/router';
+export*from"@zos/router";

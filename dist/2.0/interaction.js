@@ -1,1 +1,1 @@
-export * from '@zos/interaction';
+export*from"@zos/interaction";

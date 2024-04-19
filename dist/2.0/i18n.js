@@ -1,1 +1,1 @@
-export * from '@zos/i18n';
+export*from"@zos/i18n";

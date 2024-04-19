@@ -26,8 +26,6 @@
     "./user": "./dist/current/user.js",
     "./utils": "./dist/current/utils.js",
     "./data-conversion": "./dist/current/data.js",
-    "./message-side": "./dist/current/message-side.js",
-    "./message": "./dist/current/message.js",
     "./zml-base-app": "./dist/current/zml-app.js",
     "./zml-base-page": "./dist/current/zml-page.js",
     "./zml-base-side": "./dist/current/zml-side-service.js"

@@ -1,3 +1,1 @@
-const TransferFile = undefined;
-
-export { TransferFile as default };
+const o=void 0;export{o as default};

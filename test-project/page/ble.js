@@ -1,8 +1,8 @@
 /* global Page */
-import { TestSreen } from '../lib/TestScreen'
+import { TestSreen } from '../lib/TestScreen';
 
 Page({
-  onInit () {
-    new TestSreen().start({})
-  }
-})
+  onInit() {
+    new TestSreen().start({});
+  },
+});

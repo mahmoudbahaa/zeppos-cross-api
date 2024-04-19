@@ -1,1 +1,1 @@
-export * from '@zos/device';
+export*from"@zos/device";

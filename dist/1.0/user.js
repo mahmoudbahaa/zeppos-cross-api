@@ -1,13 +1,1 @@
-import { U as UNSUPPORTED } from './_constants-DnfQ3JJx.js';
-
-/* global hmSetting */
-
-const GENDER_MALE = 0;
-const GENDER_FEMALE = 1;
-const GENDER_UNSPECIFIED = 2;
-const getProfile = () => hmSetting.getUserData();
-const addHealthData = () => {
-	throw new Error(UNSUPPORTED);
-};
-
-export { GENDER_FEMALE, GENDER_MALE, GENDER_UNSPECIFIED, addHealthData, getProfile };
+import{U as t}from"./_constants-Cre2CkpB.js";const r=0,o=1,s=2,e=()=>hmSetting.getUserData(),n=()=>{throw new Error(t)};export{o as GENDER_FEMALE,r as GENDER_MALE,s as GENDER_UNSPECIFIED,n as addHealthData,e as getProfile};

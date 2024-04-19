@@ -1,1 +1,1 @@
-export * from '@zos/settings';
+export*from"@zos/settings";

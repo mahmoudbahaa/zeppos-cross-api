@@ -1,23 +1,23 @@
 /* global Page */
 import {
-  testGetAutoBrightness,
-  testGetBrightness,
-  testGetSettings,
-  testPauseDropWristScreenOff,
-  testPausePalmScreenOff,
-  testResetDropWristScreenOff,
-  testResetPageBrightTime,
-  testResetPalmScreenOff,
-  testSetAutoBrightness,
-  testSetBrightness,
-  testSetPageBrightTime,
-  testSetScreenOff,
-  testSetWakeUpRelaunch
-} from '../lib/api-tests/display'
-import { TestSreen } from '../lib/TestScreen'
+	testGetAutoBrightness,
+	testGetBrightness,
+	testGetSettings,
+	testPauseDropWristScreenOff,
+	testPausePalmScreenOff,
+	testResetDropWristScreenOff,
+	testResetPageBrightTime,
+	testResetPalmScreenOff,
+	testSetAutoBrightness,
+	testSetBrightness,
+	testSetPageBrightTime,
+	testSetScreenOff,
+	testSetWakeUpRelaunch,
+} from '../lib/api-tests/display';
+import { TestSreen } from '../lib/TestScreen';
 
 Page({
-  onInit () {
+  onInit() {
     new TestSreen().start({
       getAutoBrightness: () => testGetAutoBrightness(),
       getBrightness: () => testGetBrightness(),
@@ -31,7 +31,7 @@ Page({
       setPageBrightTime: () => testSetPageBrightTime(),
       setScreenOff: () => testSetScreenOff(),
       setWakeUpRelaunch: () => testSetWakeUpRelaunch(),
-      getSettings: () => testGetSettings()
-    })
-  }
-})
+      getSettings: () => testGetSettings(),
+    });
+  },
+});
