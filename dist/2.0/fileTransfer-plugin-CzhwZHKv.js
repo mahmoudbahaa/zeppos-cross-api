@@ -1,6 +1,4 @@
 import { log } from '@zos/utils';
-import { g as getFileTransfer } from './file-transfer-btNVMsMj.js';
-import TransferFile from './bleTransferFile.js';
 
 function loggerPlugin() {
   return {
@@ -55,35 +53,18 @@ function httpRequest(data, opts = {}) {
   )
 }
 
-const fileTransferLib = getFileTransfer(new TransferFile());
-
 function appPlugin(opts) {
   return {
-    onCreate() {
-      fileTransferLib.onFile(this.onReceivedFile?.bind(this));
-    },
-    onDestroy() {
-      fileTransferLib.offFile();
-    },
     sendFile(path, opts) {
-      return fileTransferLib.sendFile(path, opts);
+      throw new Error('File Transfer only supported in APLI_LEVEL 3.0+');
     },
   };
 }
 
 function pagePlugin(opts) {
   return {
-    onInit() {
-      this._onReceivedFile = this.onReceivedFile?.bind(this);
-      fileTransferLib.onFile(this._onReceivedFile);
-    },
-    onDestroy() {
-      if (this._onReceivedFile) {
-        fileTransferLib.offFile(this._onReceivedFile);
-      }
-    },
     sendFile(path, opts) {
-      return fileTransferLib.sendFile(path, opts);
+      throw new Error('File Transfer only supported in APLI_LEVEL 3.0+');
     },
   };
 }

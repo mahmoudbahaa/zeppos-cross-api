@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === 'production') {
 	);
 }
 
-const API_LEVELS = [/*'1.0', '2.0',*/ '3.0'];
+const API_LEVELS = ['1.0', '2.0', '3.0'];
 const modules = [
 	'alarm.js',
 	'app-service.js',
@@ -75,7 +75,6 @@ API_LEVELS.forEach(apiLevel => {
 			replace({
 				preventAssignment: true,
 				__DEBUG__: process.env.NODE_ENV === 'production' ? undefined : true,
-				__API_LEVEL__: '\'1.0\'',
 			}),
 			nodeResolve(),
 			commonjs(),

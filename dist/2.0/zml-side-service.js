@@ -1,5 +1,4 @@
-import { M as MessageBuilder, w as wrapperMessage } from './message-DvV8XCTS.js';
-import { g as getFileTransfer } from './file-transfer-btNVMsMj.js';
+import { M as MessageBuilder, w as wrapperMessage } from './message-wrapper-CcH5db5h.js';
 import './data.js';
 
 function loggerPlugin() {
@@ -149,29 +148,12 @@ function messagingPlugin() {
   };
 }
 
-const fileTransferLib = getFileTransfer(transferFile);
-
 function fileTransferPlugin() {
   return {
-    onInit() {
-      this._onReceivedFile = this.onReceivedFile?.bind(this);
-      fileTransferLib.onSideServiceFileFinished(this._onReceivedFile);
-
-      if (typeof sideService !== 'undefined') {
-        if (sideService.launchReasons.fileTransfer) {
-          fileTransferLib.emitFile();
-        }
-      }
-    },
-    onDestroy() {
-      if (this._onReceivedFile) {
-        fileTransferLib.offFile(this._onReceivedFile);
-      }
-    },
     sendFile(path, opts) {
-      return fileTransferLib.sendFile(path, opts)
+      throw new Error('File Transfer only supported in APLI_LEVEL 3.0+');
     },
-  }
+  };
 }
 
 function downloadPlugin(opt) {
@@ -181,25 +163,26 @@ function downloadPlugin(opt) {
       ...opts,
     });
 
-    return task
+    return task;
   };
 }
 
 const convertLib = {
   convert(opts) {
-    return image.convert(opts)
+    throw new Error('Image Convert is only avalaible in API_LEVEL 3.0+');
   },
 };
 
 function convertPlugin(opt) {
   opt.convert = function (opts) {
-    return convertLib.convert(opts)
+    return convertLib.convert(opts);
   };
 }
 
 /**
    * @type {{ onInit?: (opts:any) => void, onRun?: (opts:any) => void, onDestroy?: (opts:any) => void;}[]}
    */
+// @ts-ignore
 const plugins = [loggerPlugin(), settingsPlugin(), messagingPlugin(), fileTransferPlugin()];
 const transfomers = [downloadPlugin, convertPlugin];
 

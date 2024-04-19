@@ -14,18 +14,13 @@ class EventBus {
   }
 
   off(type, cb) {
-    if (!type) {
-      return;
-    }
+    if (!type) return
 
     if (cb) {
       const cbs = this.listeners.get(type);
 
-      if (!cbs) {
-        return;
-      }
-
-      const index = cbs.findIndex(i => i === cb);
+      if (!cbs) return
+      const index = cbs.findIndex((i) => i === cb);
 
       if (index >= 0) {
         cbs.splice(index, 1);
@@ -36,7 +31,7 @@ class EventBus {
   }
 
   emit(type, ...args) {
-    for (const cb of this.listeners.get(type) ?? []) {
+    for (let cb of this.listeners.get(type) ?? []) {
       cb && cb(...args);
     }
   }
@@ -50,12 +45,11 @@ class EventBus {
       this.off(type, onceCb);
       cb(...args);
     };
-
     this.on(type, onceCb);
   }
 
   count(type) {
-    return (this.listeners.get(type) ?? []).length;
+    return (this.listeners.get(type) ?? []).length
   }
 }
 
@@ -78,7 +72,7 @@ function Deferred() {
 }
 
 function isZeppOS() {
-  return typeof hmApp !== 'undefined' || typeof __$$R$$__ !== 'undefined';
+  return typeof __ZEPPOS__ !== 'undefined';
 }
 
 function isPlainObject(item) {
@@ -344,12 +338,12 @@ class MessageBuilder extends EventBus {
       ble = undefined,
       logger = undefined,
     } = {
-        appId: 0,
-        appDevicePort: 20,
-        appSidePort: 0,
-        ble: undefined,
-        logger: undefined,
-      },
+      appId: 0,
+      appDevicePort: 20,
+      appSidePort: 0,
+      ble: undefined,
+      logger: undefined,
+    },
   ) {
     super();
     this.isDevice = isZeppOS();
@@ -467,10 +461,10 @@ class MessageBuilder extends EventBus {
     // @ts-ignore
     messaging && messaging.peerSocket.addListener('message', message => {
       this.logger.warn(
-          '[RAW] [R] receive size=>%d bin=>%s',
-          message.byteLength,
-          bin2hex(message),
-        );
+            '[RAW] [R] receive size=>%d bin=>%s',
+            message.byteLength,
+            bin2hex(message),
+          );
       this.onMessage(message);
     });
 

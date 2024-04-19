@@ -1,36 +1,38 @@
-import * as ble from '../ble';
-import { EventBus, log as Logger } from '../utils';
-import {
-  bin2hex, buf2json, buf2str, json2buf, str2buf,
-} from './data';
-import { Deferred, timeout } from './defer';
-import { isDevice } from './js-module';
+import { getPackageInfo } from './app.js';
+import { openSync, O_APPEND, writeSync, closeSync } from './fs.js';
+import { log } from './utils.js';
+import { createConnect, disConnect, send } from './ble.js';
+import { buf2json, json2buf, bin2hex, str2buf, buf2str } from './data.js';
+import { i as isDevice, D as Deferred, t as timeout, w as wrapperMessage } from './messageWrapper-Dejulsro.js';
+import { E as EventBus } from './event-DwQ3RP1v.js';
+import { h as httpRequest, d as downloadAndTransfer } from './httpRequest-CJ1duHAs.js';
+import './_constants-DnfQ3JJx.js';
 
 let logger;
 
 function initLogger() {
   if (isDevice()) {
-    logger = Logger.getLogger('device-message');
+    logger = log.getLogger('device-message');
     // Logger.level = logger.levels.warn
   } else {
-    logger = Logger.getLogger('side-message');
+    logger = log.getLogger('side-message');
   }
 }
 
 const DEBUG = true;
 
-export const MESSAGE_SIZE = 3600;
-export const MESSAGE_HEADER = 16;
-export const MESSAGE_PAYLOAD = MESSAGE_SIZE - MESSAGE_HEADER;
-export const HM_MESSAGE_PROTO_HEADER = 66;
-export const HM_MESSAGE_PROTO_PAYLOAD = MESSAGE_PAYLOAD - HM_MESSAGE_PROTO_HEADER;
+const MESSAGE_SIZE = 3600;
+const MESSAGE_HEADER = 16;
+const MESSAGE_PAYLOAD = MESSAGE_SIZE - MESSAGE_HEADER;
+const HM_MESSAGE_PROTO_HEADER = 66;
+const HM_MESSAGE_PROTO_PAYLOAD = MESSAGE_PAYLOAD - HM_MESSAGE_PROTO_HEADER;
 
-export const MessageFlag = {
+const MessageFlag = {
   Runtime: 0x0,
   App: 0x1,
 };
 
-export const MessageType = {
+const MessageType = {
   Shake: 0x1,
   Close: 0x2,
   Heart: 0x3,
@@ -38,35 +40,31 @@ export const MessageType = {
   DataWithSystemTool: 0x5,
   Log: 0x6,
 };
-
-export const MessageRuntimeType = {
-  Invoke: 0x1,
-};
-export const MessageVersion = {
+const MessageVersion = {
   Version1: 0x1,
 };
 
-export const MessagePayloadType = {
+const MessagePayloadType = {
   Request: 0x1,
   Response: 0x2,
   Notify: 0x3,
 };
 
-export const DataType = {
+const DataType = {
   empty: 'empty',
   json: 'json',
   text: 'text',
   bin: 'bin',
 };
 
-export const MessagePayloadDataTypeOp = {
+const MessagePayloadDataTypeOp = {
   EMPTY: 0x0,
   TEXT: 0x1,
   JSON: 0x2,
   BIN: 0x3,
 };
 
-export function getDataType(type) {
+function getDataType(type) {
   switch (type.toLowerCase()) {
     case DataType.json:
       return MessagePayloadDataTypeOp.JSON;
@@ -82,22 +80,22 @@ export function getDataType(type) {
 }
 
 // 中续，结束
-export const MessagePayloadOpCode = {
+const MessagePayloadOpCode = {
   Continued: 0x0,
   Finished: 0x1,
 };
 
 let traceId = 10000;
-export function genTraceId() {
+function genTraceId() {
   return traceId++;
 }
 
 let spanId = 1000;
-export function genSpanId() {
+function genSpanId() {
   return spanId++;
 }
 
-export function getTimestamp(t = Date.now()) {
+function getTimestamp(t = Date.now()) {
   return t % 10000000;
 }
 
@@ -218,7 +216,7 @@ class SessionMgr {
   }
 }
 
-export class MessageBuilder extends EventBus {
+class MessageBuilder extends EventBus {
   constructor(
     { appId = 0, appDevicePort = 20, appSidePort = 0 } = {
       appId: 0,
@@ -271,8 +269,8 @@ export class MessageBuilder extends EventBus {
       this.onMessage(message);
     });
 
-    ble.createConnect((index, data, size) => {
-      DEBUG && logger.warn('[RAW] [R] receive index=>%d size=>%d bin=>%s', index, size, bin2hex(data));
+    createConnect((index, data, size) => {
+      logger.warn('[RAW] [R] receive index=>%d size=>%d bin=>%s', index, size, bin2hex(data));
       this.onFragmentData(data);
     });
 
@@ -284,7 +282,7 @@ export class MessageBuilder extends EventBus {
     logger.debug('app ble disconnect');
     this.sendClose();
     this.off('message');
-    ble.disConnect();
+    disConnect();
 
     cb && cb(this);
   }
@@ -292,7 +290,7 @@ export class MessageBuilder extends EventBus {
   listen(cb) {
     messaging
       && messaging.peerSocket.addListener('message', message => {
-        DEBUG && logger.warn('[RAW] [R] receive size=>%d bin=>%s', message.byteLength, bin2hex(message));
+        logger.warn('[RAW] [R] receive size=>%d bin=>%s', message.byteLength, bin2hex(message));
         this.onMessage(message);
       });
 
@@ -433,7 +431,7 @@ export class MessageBuilder extends EventBus {
   sendBin(buf, debug = DEBUG) {
     // Ble 发送消息
     debug && logger.warn('[RAW] [S] send size=%d bin=%s', buf.byteLength, bin2hex(buf.buffer));
-    const result = ble.send(buf.buffer, buf.byteLength);
+    const result = send(buf.buffer, buf.byteLength);
 
     if (!result) {
       throw Error('send message error');
@@ -528,9 +526,9 @@ export class MessageBuilder extends EventBus {
     }
 
     if (offset === userDataLength) {
-      DEBUG && logger.debug('HmProtocol send ok msgSize=> %d dataSize=> %d', offset, userDataLength);
+      logger.debug('HmProtocol send ok msgSize=> %d dataSize=> %d', offset, userDataLength);
     } else {
-      DEBUG && logger.error('HmProtocol send error msgSize=> %d dataSize=> %d', offset, userDataLength);
+      logger.error('HmProtocol send error msgSize=> %d dataSize=> %d', offset, userDataLength);
     }
   }
 
@@ -576,12 +574,6 @@ export class MessageBuilder extends EventBus {
           messageType,
         },
       );
-    }
-
-    if (offset === userDataLength) {
-      // Logger.debug('SimpleProtocol send ok msgSize=> %d dataSize=> %d', offset, userDataLength)
-    } else {
-      // Logger.error('SimpleProtocol send error msgSize=> %d dataSize=> %d', offset, userDataLength)
     }
   }
 
@@ -842,7 +834,7 @@ export class MessageBuilder extends EventBus {
     const data = this.readBin(bin);
     this.emit('raw', bin);
 
-    DEBUG && logger.debug('receive data=>', JSON.stringify(data));
+    logger.debug('receive data=>', JSON.stringify(data));
     if (data.flag === MessageFlag.App && data.type === MessageType.Shake) {
       this.appSidePort = data.port2;
       logger.debug('appSidePort=>', data.port2);
@@ -928,7 +920,7 @@ export class MessageBuilder extends EventBus {
 
       const transact = ({ traceId, payload, dataType }) => {
         this.errorIfBleDisconnect();
-        DEBUG && logger.debug('traceId=>%d payload=>%s', traceId, payload.toString('hex'));
+        logger.debug('traceId=>%d payload=>%s', traceId, payload.toString('hex'));
         if (traceId === requestId) {
           let result;
           switch (dataType) {
@@ -946,8 +938,8 @@ export class MessageBuilder extends EventBus {
               break;
           }
 
-          DEBUG && logger.debug('request id=>%d payload=>%j', requestId, data);
-          DEBUG && logger.debug('response id=>%d payload=>%j', requestId, result);
+          logger.debug('request id=>%d payload=>%j', requestId, data);
+          logger.debug('response id=>%d payload=>%j', requestId, result);
 
           this.off('response', transact);
           this.off('error', error);
@@ -991,7 +983,7 @@ export class MessageBuilder extends EventBus {
             return resolve();
           }
 
-          DEBUG && logger.error(`request timeout in ${opts.timeout}ms error=> %d data=> %j`, requestId, data);
+          logger.error(`request timeout in ${opts.timeout}ms error=> %d data=> %j`, requestId, data);
           this.off('response', transact);
 
           reject(Error(`Timed out in ${opts.timeout}ms.`));
@@ -1025,7 +1017,7 @@ export class MessageBuilder extends EventBus {
       let hasReturned = false;
 
       const transact = ({ traceId, payload, dataType }) => {
-        DEBUG && logger.debug('traceId=>%d payload=>%s', traceId, payload.toString('hex'));
+        logger.debug('traceId=>%d payload=>%s', traceId, payload.toString('hex'));
         if (traceId === requestId) {
           let result;
           switch (dataType) {
@@ -1043,8 +1035,8 @@ export class MessageBuilder extends EventBus {
               break;
           }
 
-          DEBUG && logger.debug('request id=>%d payload=>%j', requestId, data);
-          DEBUG && logger.debug('response id=>%d payload=>%j', requestId, result);
+          logger.debug('request id=>%d payload=>%j', requestId, data);
+          logger.debug('response id=>%d payload=>%j', requestId, result);
 
           timer1 && clearTimeout(timer1);
           timer1 = null;
@@ -1087,7 +1079,7 @@ export class MessageBuilder extends EventBus {
           return;
         }
 
-        DEBUG && logger.error(`request time out in ${opts.timeout}ms error=>%d data=>%j`, requestId, data);
+        logger.error(`request time out in ${opts.timeout}ms error=>%d data=>%j`, requestId, data);
         this.off('response', transact);
         cb(Error(`Timed out in ${opts.timeout}ms.`));
       }, opts.timeout);
@@ -1154,3 +1146,75 @@ export class MessageBuilder extends EventBus {
     });
   }
 }
+
+const appDevicePort = 20;
+const appSidePort = 0;
+
+function createDeviceMessage() {
+  const messageBuilder = new MessageBuilder({
+    appId: getPackageInfo().appId,
+    appDevicePort,
+    appSidePort,
+  });
+
+  const messaging = wrapperMessage(messageBuilder, log.getLogger('message-builder-device'));
+  messaging.onCall = (cb) => {
+    return messaging.onCall(payload => {
+      if (payload.method === "chunk.received") {
+        const fd = openSync({ path: cb.fileName, flag: O_APPEND });
+        writeSync({
+          fd,
+          buffer: payload.buffer
+        });
+        closeSync({ fd });
+        return
+      }
+
+      cb && cb(payload);
+    })
+  };
+
+  return messaging
+}
+
+function appPlugin(opts) {
+  const messaging = createDeviceMessage();
+  return {
+    onCreate() {
+      this.messaging = this.globalData.messaging = messaging;
+      this._onCall = this.onCall?.bind(this);
+      this._onRequest = this.onRequest?.bind(this);
+      this.messaging.onCall(this._onCall).onRequest(this._onRequest).connect();
+    },
+    onDestroy() {
+      this.messaging.offOnCall().offOnRequest().disConnect();
+    },
+    request(data, opts = {}) {
+      return this.messaging.request(data, opts)
+    },
+    call(data) {
+      return this.messaging.call(data)
+    },
+    httpRequest,
+    downloadAndTransfer,
+  }
+}
+
+function BaseApp(option) {
+	const messagingPlug = appPlugin();
+	return {
+		...option,
+		...messagingPlug,
+    sendFile(path, opts) { throw new Error("File Transfer need API_LEVEL 3.0") },
+		onCreate(...opts) {
+			messagingPlug.onCreate.apply(this);
+			option.onCreate?.apply(this, opts);
+		},
+		onDestroy(...opts) {
+			option.onDestroy?.apply(this, opts);
+			messagingPlug.onDestroy.apply(this);
+		},
+	};
+}
+
+export { BaseApp };

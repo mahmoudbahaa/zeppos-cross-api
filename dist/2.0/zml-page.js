@@ -1,11 +1,9 @@
-import { h as httpRequest, l as loggerPlugin, p as pagePlugin$1 } from './fileTransfer-plugin-DPbj0CWM.js';
+import { h as httpRequest, l as loggerPlugin, p as pagePlugin$1 } from './fileTransfer-plugin-CzhwZHKv.js';
 import '@zos/utils';
-import './file-transfer-btNVMsMj.js';
-import './bleTransferFile.js';
 
 function getDeviceMessage() {
   const { messaging } = getApp()._options.globalData;
-  return messaging
+  return messaging;
 }
 
 function pagePlugin(opts) {
@@ -27,13 +25,13 @@ function pagePlugin(opts) {
       }
     },
     request(data, opts = {}) {
-      return this.messaging.request(data, opts)
+      return this.messaging.request(data, opts);
     },
     call(data) {
-      return this.messaging.call(data)
+      return this.messaging.call(data);
     },
     httpRequest,
-  }
+  };
 }
 
 /**
