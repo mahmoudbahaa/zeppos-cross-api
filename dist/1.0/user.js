@@ -1,1 +1,1 @@
-import{U as t}from"./_constants-Cre2CkpB.js";const r=0,o=1,s=2,e=()=>hmSetting.getUserData(),n=()=>{throw new Error(t)};export{o as GENDER_FEMALE,r as GENDER_MALE,s as GENDER_UNSPECIFIED,n as addHealthData,e as getProfile};
+import{U as t}from"./_constants-Cre2CkpB.js";const r=0,o=1,s=2,getProfile=()=>hmSetting.getUserData(),addHealthData=()=>{throw new Error(t)};export{o as GENDER_FEMALE,r as GENDER_MALE,s as GENDER_UNSPECIFIED,addHealthData,getProfile};

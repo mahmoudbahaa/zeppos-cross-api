@@ -1,0 +1,1 @@
+function isZeppOS(){return"undefined"!=typeof hmApp}function isPlainObject(e){return"object"==typeof e&&!Buffer.isBuffer(e)&&!Array.isArray(e)&&null!==e}function isHmTimerDefined(){return"undefined"!=typeof timer}function notSupported(e){throw new Error(e+" is only avalaible in API_LEVEL 3.0+")}export{isZeppOS as a,isPlainObject as b,isHmTimerDefined as i,notSupported as n};
