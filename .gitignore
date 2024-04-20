@@ -12,6 +12,4 @@ selenium-debug.log
 *.ntvs*
 *.njsproj
 *.sln
-/test-project/1.0
-/test-project/2.0
-/test-project/3.0
+/test-project/lib/api
