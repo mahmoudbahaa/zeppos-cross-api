@@ -1,3 +1,9 @@
+### 1.0.16
+
+* Include [ZML](https://github.com/zepp-health/zml) library with modifications to work with this library for easness of use instead of MessageBuilder
+* Remove MessageBuilder exports.
+* Revamp the test project and fix some issues 
+
 ### 1.0.15
 
 * Use composition instead of extends for sensors of 2.0 as they throw an exception

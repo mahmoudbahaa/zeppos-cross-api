@@ -63,11 +63,21 @@ try {
   do something else
 }
 ```
-In addition to the modules in 3.0 There is four 4 new modules (sources [here](https://github.com/zepp-health/zeppos-samples/tree/main/application/2.0/fetch-api/shared) and [here](https://github.com/zepp-health/zeppos-samples/tree/main/application/1.0/fetch-api/shared)):
+In addition to the modules in 3.0 There is four 5 new modules (sources [here](https://github.com/zepp-health/zeppos-samples/tree/main/application/2.0/fetch-api/shared) and [here](https://github.com/zepp-health/zeppos-samples/tree/main/application/1.0/fetch-api/shared)):
 
 1. `data-conversion` contains very usefull functions like `str2bin` to convert from `string` to `ArrayBuffer` and `bin2str` for viceversa.
-2. `message-side` containes MessageBuilder for Side App (include in side js)
-3. `message` containes MessageBuilder for Device App (include in app.js)
+2. `device-polyfill` import in your app.js if you want to use `promises` and `setTimeout`/`setInterval` without worrying about api level
+3. `zml-base-app` modified version of [ZML](https://github.com/zepp-health/zml) base app
+4. `zml-base-page` modified version of [ZML](https://github.com/zepp-health/zml) base page
+5. `zml-base-side` modified version of [ZML](https://github.com/zepp-health/zml) base side
+
+zml is recommended for usage for fetch, httprequest and other side service APIs but take care that 
+
+1. Image Convert
+2. Download
+3. FileTransfer
+
+are only avaliable in 3.0+ and would throw unsupported exception in other api levels.
 
 # :dart: SUPPORT STATUS <a name = "status"></a>
 

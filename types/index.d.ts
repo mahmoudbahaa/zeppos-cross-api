@@ -15,6 +15,7 @@
 /// <reference path="./zeppos-cross-api/.ble.d.ts" />
 /// <reference path="./zeppos-cross-api/.ble.transferFile.d.ts" />
 /// <reference path="./zeppos-cross-api/.data-conversion.d.ts" />
+/// <reference path="./zeppos-cross-api/.device-polyfill.d.ts" />
 /// <reference path="./zeppos-cross-api/.device.d.ts" />
 /// <reference path="./zeppos-cross-api/.display.d.ts" />
 /// <reference path="./zeppos-cross-api/.fs.d.ts" />

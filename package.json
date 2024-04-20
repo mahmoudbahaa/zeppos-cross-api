@@ -1,6 +1,6 @@
 {
   "name": "zeppos-cross-api",
-  "version": "1.0.15",
+  "version": "1.0.16",
   "description": "Cross-API library for ZeppOS for using 3.0 API and creating 1.0, 2.0, 3.0+ projects",
   "zeppos": true,
   "bin": "./bin/bin.js",
@@ -26,6 +26,7 @@
     "./user": "./dist/current/user.js",
     "./utils": "./dist/current/utils.js",
     "./data-conversion": "./dist/current/data.js",
+    "./device-polyfill": "./dist/current/device-polyfill.js",
     "./zml-base-app": "./dist/current/zml-app.js",
     "./zml-base-page": "./dist/current/zml-page.js",
     "./zml-base-side": "./dist/current/zml-side-service.js"
