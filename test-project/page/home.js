@@ -19,7 +19,7 @@ Page({
   onInit() {
     new HomePage().start([
       'alarm',
-      'app',
+      'appl',
       'ble',
       'device',
       'display',

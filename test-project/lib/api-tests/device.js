@@ -1,5 +1,6 @@
-import { getDeviceInfo, getDiskInfo } from '@zos/device';
-import { SCREEN_SHAPE_ROUND, SCREEN_SHAPE_SQUARE } from '../device';
+import {
+ getDeviceInfo, getDiskInfo, SCREEN_SHAPE_ROUND, SCREEN_SHAPE_SQUARE,
+} from '../api/device';
 
 export function testGetDeviceInfo() {
   return JSON.stringify(getDeviceInfo());

@@ -1,4 +1,4 @@
-import { createWidget, event, widget } from '../../ui';
+import { createWidget, event, widget } from '../../api/ui';
 import { SCREEN_MARGIN_X, SCREEN_WIDTH, WIDGET_WIDTH } from '../UiParams';
 
 export class CardEntry {

@@ -1,4 +1,4 @@
-import { getDeviceInfo } from '../device';
+import { getDeviceInfo } from '../api/device';
 
 const info = getDeviceInfo();
 

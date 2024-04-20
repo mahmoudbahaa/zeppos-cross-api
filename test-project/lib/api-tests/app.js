@@ -1,6 +1,6 @@
 import {
 	SCENE_AOD, SCENE_APP, SCENE_SETTINGS, SCENE_WATCHFACE, emitCustomSystemEvent, getPackageInfo, getScene, queryPermission, requestPermission,
-} from '../app';
+} from '../api/app';
 
 export function testGetPackageInfo() {
   const pkgInfo = getPackageInfo();

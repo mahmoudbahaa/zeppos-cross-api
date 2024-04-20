@@ -5,7 +5,7 @@ import {
 	setPageBrightTime,
 	setScreenOff,
 	setWakeUpRelaunch,
-} from '../display';
+} from '../api/display';
 
 export function testGetAutoBrightness() {
   return String(getAutoBrightness());

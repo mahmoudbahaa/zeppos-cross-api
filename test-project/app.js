@@ -1,4 +1,5 @@
 /* global App */
+import './lib/api/device-polyfill';
 
 App({
   globalData: {

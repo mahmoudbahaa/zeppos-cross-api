@@ -1,6 +1,6 @@
 import {
 	align, createWidget, getTextLayout, widget,
-} from '../ui';
+} from '../api/ui';
 import { RowEntry } from './ListScreenParts/RowEntry';
 import {
 	BASE_FONT_SIZE,

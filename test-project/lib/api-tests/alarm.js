@@ -1,5 +1,5 @@
 // @ts-ignore
-import { cancel, getAllAlarms, set } from '../alarm';
+import { cancel, getAllAlarms, set } from '../api/alarm';
 
 export function testAlarmSet(thisFile) {
   set({ file: thisFile, delay: 10 });

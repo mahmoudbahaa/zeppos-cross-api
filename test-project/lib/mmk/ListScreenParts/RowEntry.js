@@ -1,7 +1,7 @@
 
 import {
  align, getTextLayout, text_style, widget,
-} from '../../ui';
+} from '../../api/ui';
 import { WIDGET_WIDTH } from '../UiParams';
 import { CardEntry } from './CardEntry';
 
