@@ -22,7 +22,7 @@ if __name__=="__main__":
     shutil.rmtree(apiFolder)
 
   print("Copying corresponding api files")
-  shutil.copytree("../dist/" + APi_LEVEL, "lib/api")
+  shutil.copytree("../lib/api/" + APi_LEVEL, "lib/api")
 
   print("Running zeus dev")
   subprocess.run(["zeus", "dev"])
