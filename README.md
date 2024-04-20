@@ -264,7 +264,6 @@ API_LEVEL 2.0 and 1.0:
 
 - [Zepp OS 3.0](https://docs.zepp.com/docs/intro/) - Framework
 - [rollup](https://rollupjs.org/)
-- [watchdog](https://pypi.org/project/watchdog/) watch folder for changes
 - modified version of [prepare_all.py](https://github.com/melianmiko/ZeppOS-Toolbox/blob/master/prepare_all.py), [app.json](https://github.com/melianmiko/ZeppOS-Toolbox/blob/master/app.json) and other files from [ZeppOS-Toolbox](https://github.com/melianmiko/ZeppOS-Toolbox) by [melianmiko](https://github.com/melianmiko)
 
 ## ✍️ Authors <a name = "authors"></a>
